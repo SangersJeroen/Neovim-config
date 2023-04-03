@@ -66,4 +66,5 @@ return require('packer').startup(function(use)
   use { "mrjones2014/smart-splits.nvim" }
   use { "voldikss/vim-floaterm" }
 
+  use { "Exafunction/codeium.vim" }
 end)

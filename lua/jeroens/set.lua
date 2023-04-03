@@ -31,3 +31,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "72"
 
 vim.g.mapleader = " "
+
+vim.g.codeium_disable_bindings = 1
+vim.g.codeium_enabled = true
+vim.g.codeium_manual = true

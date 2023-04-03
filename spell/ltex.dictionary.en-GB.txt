@@ -3,3 +3,7 @@ Intralayer
 intralayer
 superlattices
 Excitonic
+TMDC
+TMDC
+Trilayer
+subpixel
