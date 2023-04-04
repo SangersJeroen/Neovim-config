@@ -22,3 +22,5 @@ vim.keymap.set("n", "<leader>P", '"*p')
 vim.keymap.set("n", "<leader>C", '<cmd>q<CR>')
 
 vim.keymap.set("n", "<leader>W", '<cmd>set wrap!<CR>')
+
+vim.keymap.set("n", "<c-s>", '<cmd>Telescope session-lens search_session<CR>')

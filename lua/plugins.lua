@@ -67,4 +67,22 @@ return require('packer').startup(function(use)
   use { "voldikss/vim-floaterm" }
 
   use { "Exafunction/codeium.vim" }
+  use {
+    'rmagatti/auto-session',
+    config = function()
+    require("auto-session").setup {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+      auto_save_enabled = true,
+      auto_restore_enabled = true,
+    }
+  end
+}
+  use {
+  'rmagatti/session-lens',
+  requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+  config = function()
+    require('session-lens').setup({prompt_title = "Sessions"})
+  end
+}
 end)
