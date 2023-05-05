@@ -8,3 +8,17 @@ TMDC
 Trilayer
 subpixel
 MREELS
+EMPAD
+undiffracted
+eucentric
+FEG
+HRTEM
+stigmator
+Ronchigram
+condensor
+HAADF
+Velox
+Sangers
+TUD
+QN
+FEGs

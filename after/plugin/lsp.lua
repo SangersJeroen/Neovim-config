@@ -52,6 +52,8 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "<C-x>", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<Space>c", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<Space>v", function() vim.diagnostic.goto_next() end, opts)
 end)
 
 lsp.setup()

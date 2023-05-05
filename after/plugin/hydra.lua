@@ -87,7 +87,7 @@ hydra({
         hint = [[
 ^                       LSP Commands
         _r_: Code References        _n_: Code Rename
-_f_: Open Float         _._: Next Issue             _,_: Previous Issue
+                      _f_: Open Float
 ^
 ^^                      _q_/_<Esc>_: Exit Hydra
         ]],
@@ -96,8 +96,6 @@ _f_: Open Float         _._: Next Issue             _,_: Previous Issue
         {"r",     cmd "lua vim.lsp.buf.references()",  {desc = "Code References", silent = true}},
         {"n",     cmd "lua vim.lsp.buf.rename()",  {desc = "Code Rename", silent = true}},
         {"f",     cmd "lua vim.diagnostic.open_float()",  {desc = "Open Float", silent = true}},
-        {".",     cmd "lua vim.diagnostic.goto_next()",  {desc = "Next", silent = true}},
-        {",",     cmd "lua vim.diagnostic.goto_prev()",  {desc = "Previous", silent = true}},
         {"q",       nil, {desc = "quit", exit = true, nowait = true}},
         {"<Esc>",   nil, {desc = "quit", exit = true, nowait = true}}
     }
