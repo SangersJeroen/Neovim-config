@@ -123,11 +123,11 @@ _f_:Ranger              _p_:Python              _g_:Lazygit
         ]],
     body = "<Space>t",
     heads = {
-        {"f",     cmd "FloatermNew ranger",  {desc = "Ranger", silent = true}},
-        {"p",     cmd "FloatermNew python",  {desc = "Python", silent = true}},
-        {"g",     cmd "FloatermNew lazygit",  {desc = "Lazygit", silent = true}},
-        {"c",     cmd "FloatermNew! cht.sh --shell",  {desc = "Cht.sh", silent = true}},
-        {"t",     cmd "FloatermNew --cwd=<buffer>",  {desc = "Terminal Here", silent = true}},
+        {"f",     cmd "FloatermNew ranger",  {desc = "Ranger", silent = true, nowait=true, exit_before=true}},
+        {"p",     cmd "FloatermNew python",  {desc = "Python", silent = true, nowait=true, exit_before=true}},
+        {"g",     cmd "FloatermNew lazygit",  {desc = "Lazygit", silent = true, nowait=true, exit_before=true}},
+        {"c",     cmd "FloatermNew! cht.sh --shell",  {desc = "Cht.sh", silent = true, nowait=true, exit_before=true}},
+        {"t",     cmd "FloatermNew --cwd=<buffer>",  {desc = "Terminal Here", silent = true, nowait=true, exit_before=true}},
         {"q",       nil, {desc = "quit", exit = true, nowait = true}},
         {"<Esc>",   nil, {desc = "quit", exit = true, nowait = true}}
     }

@@ -84,5 +84,19 @@ return require('packer').startup(function(use)
   config = function()
     require('session-lens').setup({prompt_title = "Sessions"})
   end
-}
+  }
+  use { "folke/which-key.nvim" }
+  use { "linux-cultist/venv-selector.nvim" }
+  use {
+    "epwalsh/obsidian.nvim",
+      requires = {
+      "nvim-lua/plenary.nvim"
+      }
+  }
+  use({ "toppair/peek.nvim", run = 'deno task --quiet build:fast' })
+  use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+  use { "christoomey/vim-tmux-navigator" }
 end)
