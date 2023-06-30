@@ -1,75 +1,7 @@
 local hydra = require("hydra")
 local cmd = require("hydra.keymap-util").cmd
 
-Hop     =   require('hop')
-Ssplits =   require('smart-splits')
 Lsp     =   require('lsp-zero')
-
-local directions = require('hop.hint').HintDirection
-
-require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-
-
-hydra({
-    name = "Search Commands",
-    mode = {"n", "v"},
-    hint = [[
-           🔍︎ SEARCH COMMANDS 🔍︎
-^
-_f_: FW Search 2 Char   _b_: BW Search 2 Char   _w_: Search word
-^^
-^ _q_/<Esc>: Exit
-]],
-    config = {
-        color = 'teal',
-        invoke_on_body = true,
-        hint = {
-            type = 'window',
-            position = 'bottom',
-            border = 'rounded',
-        }
-    },
-    body = 's',
-    heads = {
-        {"f",      cmd 'lua Hop.hint_char2({direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = false})', {desc = "FWSearch 2Char", silent = true}},
-        {"b",      cmd 'lua Hop.hint_char2({direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only=false})', {desc = "BWSearch 2Char", silent = true}},
-        {"w",      cmd 'lua Hop.hint_words()', {desc = "Search Word", silent = true}},
-        {"q",      nil, {desc = "quit", exit = true, nowait = true}},
-        {"<Esc>",  nil, {desc = "quit", exit = true, nowait = true}}
-    }
-})
-
-
-hydra({
-    name = "Navigation Commands",
-    mode = {"n"},
-    config = {
-        color = "red",
-        invoke_on_body = true,
-        hint = {
-            type = "window",
-            position = "top",
-            border = "rounded",
-            show_name = true,
-        }
-    },
-        hint = [[
-                                                 Navigation Commands
-^
-_<Left>_: Resize Window Left     _<Right>_: Resize Window Right     _<Up>_: Resize Window Up     _<Down>_: Resize Window Down
-^
-^ ^                                              _q_/_<Esc>_: Exit Hydra
-        ]],
-    body = "<C-Space>",
-    heads = {
-        {"<Left>",  cmd "lua Ssplits.resize_left()",  {desc = "Resize Pane/Window Left", silent = true}},
-        {"<Right>", cmd "lua Ssplits.resize_right()", {desc = "Resize Pane/Window Right", silent = true}},
-        {"<Up>",    cmd "lua Ssplits.resize_up()",    {desc = "Resize Pane/Window Up", silent = true}},
-        {"<Down>",  cmd "lua Ssplits.resize_down()",  {desc = "Resize Pane/Window Down", silent = true}},
-        {"q",       nil, {desc = "quit", exit = true, nowait = true}},
-        {"<Esc>",   nil, {desc = "quit", exit = true, nowait = true}}
-    }
-})
 
 hydra({
     name = "LSP Commands",
@@ -105,7 +37,7 @@ hydra({
     name = "Floaterm",
     mode = {"n"},
     config = {
-        color = "red",
+        color = "teal",
         invoke_on_body = true,
         hint = {
             type = "window",

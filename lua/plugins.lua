@@ -56,7 +56,7 @@ return require('packer').startup(function(use)
   'phaazon/hop.nvim',
   branch = 'v2', -- optional but strongly recommended
   }
-  use { "mrjones2014/smart-splits.nvim" }
+  -- use { "mrjones2014/smart-splits.nvim" }
   use { "voldikss/vim-floaterm" }
 
   use { "Exafunction/codeium.vim" }
@@ -92,4 +92,37 @@ return require('packer').startup(function(use)
   requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
   use { "christoomey/vim-tmux-navigator" }
+  use { "lukas-reineke/indent-blankline.nvim" }
+  use { 'norcalli/nvim-colorizer.lua' }
+  use {
+  "cshuaimin/ssr.nvim",
+  module = "ssr",
+  -- Calling setup is optional.
+  config = function()
+    require("ssr").setup {
+      border = "rounded",
+      min_width = 50,
+      min_height = 5,
+      max_width = 120,
+      max_height = 25,
+      keymaps = {
+        close = "q",
+        next_match = "n",
+        prev_match = "N",
+        replace_confirm = "<cr>",
+        replace_all = "<leader><cr>",
+      },
+    }
+  end
+}
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
+  use {
+      'glacambre/firenvim',
+      run = function() vim.fn['firenvim#install'](0) end
+}
 end)
