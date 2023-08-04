@@ -26,7 +26,7 @@ local  opts = {
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return tostring(os.time()) .. "-" .. suffix
+      return suffix
     end,
 
     -- Optional, set to true if you don't want Obsidian to manage frontmatter.

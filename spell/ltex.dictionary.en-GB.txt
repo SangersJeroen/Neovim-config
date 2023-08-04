@@ -23,3 +23,8 @@ TUD
 QN
 FEGs
 PMMA
+Polydimethylsiloxane
+keepaspectratio
+Ptychography
+ptychography
+superlattice

@@ -1,6 +1,7 @@
 vim.g.vimtex_compiler_method = 'latexmk'
+vim.g.tex_flavor = 'lualatex'
 
-vim.g.vimtex_fold_enabled = true
+-- vim.g.vimtex_fold_enabled = true
 vim.g.vimtex_format_enabled = true
 
 vim.g.maplocalleader = '\\'
@@ -18,7 +19,7 @@ vim.g.vimtex_quickfix_ignore_filters = {
     'LaTeX hooks Warning',
     'Underfull \\hbox',
     'Overfull \\hbox',
-    'LaTeX Warning: + float specifier changed to',
+    'LaTeX Warning: h float specifier changed to',
     'Package siunitx Warning: Detected the "physics" package:',
     'Package hyperref Warning: Token not allowed in a PDF string',
     'Fatal error occurred, no output PDF file produced!'
