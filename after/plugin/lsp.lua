@@ -6,7 +6,6 @@ lsp.ensure_installed({
     'rust_analyzer',
 })
 
-
 -- Fix Undefined global 'vim'
 lsp.configure('lua-language-server', {
     settings = {
@@ -17,7 +16,6 @@ lsp.configure('lua-language-server', {
         }
     }
 })
-
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -54,11 +52,12 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<C-x>", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<Space>c", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<Space>v", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "<M-p>", function() vim.lsp.buf.format() end)
 end)
 
-vim.keymap.set("n", "<M-p>", function() vim.lsp.buf.format() end)
 lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true
 })
+

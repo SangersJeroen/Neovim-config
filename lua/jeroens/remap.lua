@@ -13,14 +13,20 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+-- # Yank to special buffer
+
+-- # Yank to system clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"*y")
 
+-- # Paste from system clipboard
 vim.keymap.set("n", "<leader>P", '"*p')
 
+-- # Quit current buffer
 vim.keymap.set("n", "<leader>C", '<cmd>q<CR>')
 
+-- # Toggle Wrap
 vim.keymap.set("n", "<leader>W", '<cmd>set wrap!<CR>')
 
 
