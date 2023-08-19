@@ -181,6 +181,21 @@ _G.packer_plugins = {
     path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mini.nvim"] = {
+    loaded = true,
+    path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
+  ["numb.nvim"] = {
+    loaded = true,
+    path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/numb.nvim",
+    url = "https://github.com/nacro90/numb.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -238,8 +253,13 @@ _G.packer_plugins = {
     path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/session-lens",
     url = "https://github.com/rmagatti/session-lens"
   },
+  ["smart-splits.nvim"] = {
+    loaded = true,
+    path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/smart-splits.nvim",
+    url = "https://github.com/mrjones2014/smart-splits.nvim"
+  },
   ["ssr.nvim"] = {
-    config = { "\27LJ\2\n‹\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\5\15prev_match\6N\15next_match\6n\nclose\6q\16replace_all\17<leader><cr>\20replace_confirm\t<cr>\1\0\5\14min_width\0032\vborder\frounded\15max_height\3\25\14max_width\3x\15min_height\3\5\nsetup\bssr\frequire\0" },
+    config = { "\27LJ\2\n‹\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\5\15prev_match\6N\15next_match\6n\nclose\6q\16replace_all\17<leader><cr>\20replace_confirm\t<cr>\1\0\5\vborder\frounded\15max_height\3\25\14max_width\3x\15min_height\3\5\14min_width\0032\nsetup\bssr\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -276,6 +296,13 @@ _G.packer_plugins = {
     path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-matchup"] = {
+    after_files = { "/home/jeroens/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
+    loaded = true,
+    needs_bufread = true,
+    path = "/home/jeroens/.local/share/nvim/site/pack/packer/opt/vim-matchup",
+    url = "https://github.com/andymass/vim-matchup"
+  },
   ["vim-tmux-navigator"] = {
     loaded = true,
     path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
@@ -290,6 +317,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["wrapping.nvim"] = {
+    loaded = true,
+    path = "/home/jeroens/.local/share/nvim/site/pack/packer/start/wrapping.nvim",
+    url = "https://github.com/andrewferrier/wrapping.nvim"
   }
 }
 
@@ -322,18 +354,25 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Setup for: vim-matchup
+time([[Setup for vim-matchup]], true)
+try_loadstring("\27LJ\2\nN\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\1\vmethod\npopup!matchup_matchparen_offscreen\6g\bvim\0", "setup", "vim-matchup")
+time([[Setup for vim-matchup]], false)
+time([[packadd for vim-matchup]], true)
+vim.cmd [[packadd vim-matchup]]
+time([[packadd for vim-matchup]], false)
 -- Config for: auto-session
 time([[Config for auto-session]], true)
 try_loadstring("\27LJ\2\nΩ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\31auto_session_suppress_dirs\1\5\0\0\a~/\15~/Projects\16~/Downloads\6/\1\0\3\14log_level\nerror\22auto_save_enabled\2\25auto_restore_enabled\2\nsetup\17auto-session\frequire\0", "config", "auto-session")
 time([[Config for auto-session]], false)
--- Config for: session-lens
-time([[Config for session-lens]], true)
-try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\17prompt_title\rSessions\nsetup\17session-lens\frequire\0", "config", "session-lens")
-time([[Config for session-lens]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: session-lens
+time([[Config for session-lens]], true)
+try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\17prompt_title\rSessions\nsetup\17session-lens\frequire\0", "config", "session-lens")
+time([[Config for session-lens]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
