@@ -28,3 +28,13 @@ keepaspectratio
 Ptychography
 ptychography
 superlattice
+ronchigram
+recorrect
+NBED
+CBED
+epi-illumination
+HAADF-detector
+heterobilayer
+nanobeam
+cepstrum
+EWPC

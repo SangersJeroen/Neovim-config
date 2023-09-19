@@ -18,3 +18,5 @@ augroup vimtex_event_focus
   au!
   au User VimtexEventView call s:TexFocusVim()
 augroup END
+
+" vim.fn.setreg("a", "i\textbf{}")
