@@ -38,3 +38,8 @@ heterobilayer
 nanobeam
 cepstrum
 EWPC
+power-cepstrum
+spotsize
+subfigures
+intercrystal
+intracrystal
