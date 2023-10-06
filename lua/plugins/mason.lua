@@ -68,7 +68,20 @@ return {
             })
         end,
     },
-    'hrsh7th/nvim-cmp',
+    {
+        'hrsh7th/nvim-cmp',
+        config = function()
+            local lsp = require('lspconfig')
+            local cmp = require('cmp')
+            cmp.setup({
+                mapping = {
+                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            }})
+        end,
+    },
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
