@@ -22,6 +22,11 @@ for _, server_name in ipairs(get_servers()) do
     })
 end
 
+lspconfig.pyright.setup({
+    capabilities = lsp_capabilities,
+    filetype = {"python"},
+})
+
 require("lspconfig").ltex.setup {
     capabilities = lsp_capabilities,
     on_attach = function(client, bufnr)
@@ -39,4 +44,5 @@ require("lspconfig").ltex.setup {
         }
     }
 }
+
 
