@@ -2,7 +2,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         config = {
-        ensure_installed = { "c", "lua", "vim", "help", "python", "latex" },
+        ensure_installed = { "c", "lua", "vim", "help", "python", "latex", "markdown" },
               sync_install = false,
               auto_install = true,
               ignore_install = { "javascript" },

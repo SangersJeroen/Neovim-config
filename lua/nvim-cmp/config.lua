@@ -1,5 +1,3 @@
-local lspconfig = require('lspconfig')
-local lsp_defaults = lspconfig.util.default_config
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
@@ -30,6 +28,7 @@ cmp.setup({
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
         { name = 'buffer' },
+        { name = 'path' },
 
     },
 })
