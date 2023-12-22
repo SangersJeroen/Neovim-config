@@ -8,7 +8,7 @@ return {
               ignore_install = { "javascript" },
               highlight = {
                 enable = true,
-                diable = { "latex" },
+                disable = {"latex"},
                 additional_vim_regex_highlighting = false,
             }
         }

@@ -29,7 +29,7 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'path' },
-
+        { name = "codeium" },
     },
 })
 
@@ -37,4 +37,3 @@ cmp.setup({
 -- Autocomplete
 ---
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-

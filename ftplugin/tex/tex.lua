@@ -25,3 +25,23 @@ vim.g.vimtex_quickfix_ignore_filters = {
     'Fatal error occurred, no output PDF file produced!'
 }
 
+local lspconfig = require('lspconfig')
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require("lspconfig").ltex.setup {
+    capabilities = lsp_capabilities,
+    on_attach = function(client, bufnr)
+        require("ltex_extra").setup {
+            load_langs = { "en-GB", "en-US" },
+            init_check = true,
+            path = os.getenv("HOME") .. "/.config/nvim/spell",
+            log_level = "none",
+        }
+    end,
+    settings = {
+        ltex = {
+            checkFrequency = "edit",
+            language = "en-GB"
+        }
+    }
+}
