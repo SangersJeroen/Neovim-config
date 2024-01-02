@@ -43,3 +43,8 @@ spotsize
 subfigures
 intercrystal
 intracrystal
+StrainMAPPER
+excitonic
+unscattered
+wavefunction
+heterostrain
