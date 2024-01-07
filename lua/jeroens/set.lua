@@ -1,5 +1,3 @@
-vim.opt.guicursor = "i:hor20-blinkwait100-blinkoff100-blinkon600,n:bar20-blinkwait100-blinkoff100-blinkon600"
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -35,3 +33,16 @@ vim.g.mapleader = " "
 vim.g.codeium_disable_bindings = 1
 vim.g.codeium_enabled = true
 vim.g.codeium_manual = true
+
+if vim.g.neovide then
+    vim.o.guifont = "CaskaydiaCove NFM"
+    vim.opt.linespace = 4
+    vim.g.neovide_padding_top = 0
+    vim.g.neovide_padding_bottom = 0
+    vim.g.neovide_padding_right = 0
+    vim.g.neovide_padding_left = 0
+    vim.g.neovide_scroll_animation_length = 0.15
+    vim.g.neovide_scroll_animation_far_lines = 0
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_scale_factor = 1.0
+end

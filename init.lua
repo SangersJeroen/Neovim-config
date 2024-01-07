@@ -18,3 +18,4 @@ require('plugins')
 vim.o.encoding = 'UTF-8'
 
 require("lazy").setup('plugins')
+
