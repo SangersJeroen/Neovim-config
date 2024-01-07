@@ -34,6 +34,10 @@ vim.g.codeium_disable_bindings = 1
 vim.g.codeium_enabled = true
 vim.g.codeium_manual = true
 
+vim.opt.list = true
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "eol:↴"
+
 if vim.g.neovide then
     vim.o.guifont = "CaskaydiaCove NFM"
     vim.opt.linespace = 4

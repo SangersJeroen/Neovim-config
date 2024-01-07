@@ -1,8 +1,15 @@
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local luasnip = require('luasnip')
+
 cmp.setup({
     window = {
         documentation = cmp.config.window.bordered()
+    },
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
     },
     formatting = {
         fields = { 'menu', 'abbr', 'kind' },
@@ -37,3 +44,4 @@ cmp.setup({
 -- Autocomplete
 ---
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
