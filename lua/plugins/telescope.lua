@@ -19,10 +19,22 @@ return {
             'Find Git Files'
         },
         {
+            '<leader>fw',
+            function() require('telescope.builtin').grep_string({vim.fn.expand("<cword>")}); end,
+            desc =
+            'Find word under cursors'
+        },
+        {
             '<leader>fs',
             function() require('telescope.builtin').grep_string({ search = vim.fn.input("Query: ") }); end,
             desc =
             'Find in Files'
+        },
+        {
+            '<leader>fg',
+            function() require('telescope.builtin').live_grep(); end,
+            desc =
+            'Live Search'
         },
         {
             '<leader>:',
