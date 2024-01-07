@@ -36,10 +36,10 @@ return {
             vim.keymap.set('n', '<leader>a', mark.add_file)
             vim.keymap.set('n', '<C-e>', ui.toggle_quick_menu)
 
-            vim.keymap.set('n', '<C-p>', function() ui.nav_file(1) end)
-            vim.keymap.set('n', '<C-q>', function() ui.nav_file(2) end)
-            vim.keymap.set('n', '<C-r>', function() ui.nav_file(3) end)
-            vim.keymap.set('n', '<C-s>', function() ui.nav_file(4) end)
+            vim.keymap.set('n', '<M-q>', function() ui.nav_file(1) end)
+            vim.keymap.set('n', '<M-w>', function() ui.nav_file(2) end)
+            vim.keymap.set('n', '<M-e>', function() ui.nav_file(3) end)
+            vim.keymap.set('n', '<M-r>', function() ui.nav_file(4) end)
         end,
     },
 
@@ -63,22 +63,19 @@ return {
             local directions = require('hop.hint').HintDirection
 
             require 'hop'.setup {
-                keys = 'etovxqpdygfblzhckisuran',
+                keys = 'asdfghjkl;qweruiopvncm',
+                -- keys = 'etovxqpdygfblzhckisuran',
                 quit_key = ' <SPC>',
                 multi_windows = true,
             }
 
-            vim.keymap.set('n', '<M-f>',
-                function() hop.hint_char2({ direction = directions.AFTER_CURSOR, current_line_only = false }) end)
-            vim.keymap.set('n', '<M-F>',
-                function() hop.hint_char2({ direction = directions.BEFORE_CURSOR, current_line_only = false }) end)
-            vim.keymap.set('n', '<M-w>', function() hop.hint_words() end)
+            vim.keymap.set('n', '<M-f>', function() hop.hint_words() end)
         end,
     },
 
     "voldikss/vim-floaterm",
     "folke/which-key.nvim",
-    "linux-cultist/venv-selector.nvim",
+    -- "linux-cultist/venv-selector.nvim",
 
     {
         "epwalsh/obsidian.nvim",
