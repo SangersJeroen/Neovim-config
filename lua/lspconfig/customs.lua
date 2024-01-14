@@ -40,10 +40,12 @@ local on_attach_ruff = function(client, bufnr)
 end
 
 lspconfig.ruff_lsp.setup({
+    capabilities = lsp_capabilities,
     on_attach = on_attach_ruff,
 })
 
 require("mason-null-ls").setup({
+    capabilities = lsp_capabilities,
   ensure_installed = { "black" }
 })
 
@@ -71,4 +73,9 @@ require("lspconfig").ltex.setup {
             language = "en-GB"
         }
     }
+}
+
+-- Markdown LANGUAGE SERVERS CONFIGURATION
+lspconfig.marksman.setup{
+    capabilities = lsp_capabilities,
 }

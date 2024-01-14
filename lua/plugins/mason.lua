@@ -14,7 +14,7 @@ return {
     },
     {
         'williamboman/mason-lspconfig.nvim',
-        requires = {
+        dependencies = {
             'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
         },
@@ -30,7 +30,7 @@ return {
     },
     {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
-        requires = {
+        dependencies = {
             'williamboman/mason.nvim',
         },
         config = function()

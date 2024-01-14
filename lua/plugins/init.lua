@@ -1,19 +1,5 @@
 return {
     'tpope/vim-dispatch',
-
-    {
-        "kelly-lin/ranger.nvim",
-        config = function()
-            require("ranger-nvim").setup({ replace_netrw = true })
-            vim.api.nvim_set_keymap("n", "<leader>pv", "", {
-                noremap = true,
-                callback = function()
-                    require("ranger-nvim").open(true)
-                end,
-            })
-        end,
-    },
-
     {
         'rebelot/kanagawa.nvim',
         config = function()
@@ -24,7 +10,6 @@ return {
 
     -- Pluggins for LaTeX editting
     'lervag/vimtex',
-    'rafamadriz/friendly-snippets',
     'barreiroleo/ltex-extra.nvim',
 
     {
@@ -157,11 +142,33 @@ return {
 
     {
         'andymass/vim-matchup',
-        setup = function()
+        config = function()
             -- may set any options here
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
         end
     },
 
     'echasnovski/mini.nvim',
+    {
+        "sustech-data/wildfire.nvim",
+        config = function()
+            opts = {
+                {
+                    surrounds = {
+                        { "(", ")" },
+                        { "{", "}" },
+                        { "<", ">" },
+                        { "[", "]" },
+                    },
+                    keymaps = {
+                        init_selection = "<CR>",
+                        node_incremental = "<CR>",
+                        node_decremental = "<BS>",
+                    },
+                    filetype_exclude = { "qf" }, --keymaps will be unset in excluding filetypes
+                }
+            }
+            require("wildfire").setup(opts)
+        end,
+    }
 }

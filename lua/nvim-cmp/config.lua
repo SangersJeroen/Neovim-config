@@ -44,4 +44,3 @@ cmp.setup({
 -- Autocomplete
 ---
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-

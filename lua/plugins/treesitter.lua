@@ -1,8 +1,8 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        config = {
-        ensure_installed = { "c", "lua", "vim", "help", "python", "latex", "markdown" },
+        opts = {
+        ensure_installed = { "c", "lua", "vim", "help", "python", "latex", "markdown", "cpp" },
               sync_install = false,
               auto_install = true,
               ignore_install = { "javascript" },
