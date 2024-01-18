@@ -6,6 +6,9 @@ return {
                 'pyright',
                 'mypy',
                 'ruff',
+                'clangd',
+                'lua_ls',
+                'ltex',
             }
         },
         config = function()
@@ -19,12 +22,18 @@ return {
             'williamboman/mason.nvim',
         },
         config = function()
+            local lsp_zero = require('lsp-zero')
+            lsp_zero.extend_lspconfig()
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'pyright',
+                    'clangd',
                     'lua_ls',
                     'ltex',
                 },
+                handlers = {
+                    lsp_zero.default_setup,
+                }
             })
         end,
     },
@@ -37,6 +46,8 @@ return {
             require('mason-tool-installer').setup({
                 ensure_installed = {
                     'black',
+                    'ruff',
+                    'mypy',
                     'debugpy',
                 },
             })
@@ -45,29 +56,31 @@ return {
     {
         'neovim/nvim-lspconfig',
         config = function()
+            local lsp_zero = require('lsp-zero')
+            lsp_zero.extend_lspconfig()
             require "lspconfig.customs"
         end,
     },
-    {
-        'jose-elias-alvarez/null-ls.nvim',
-        ft = { 'python' },
-        opts = function()
-            return require "null-ls.customs"
-        end,
-    },
-    {
-        "jay-babu/mason-null-ls.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            "williamboman/mason.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
-        },
-        config = function()
-            require("mason-null-ls").setup({
-                ensure_installed = { "black" }
-            })
-        end,
-    },
+    -- {
+    --     'jose-elias-alvarez/null-ls.nvim',
+    --     ft = { 'python' },
+    --     opts = function()
+    --         return require "null-ls.customs"
+    --     end,
+    -- },
+    -- {
+    --     "jay-babu/mason-null-ls.nvim",
+    --     event = { "BufReadPre", "BufNewFile" },
+    --     dependencies = {
+    --         "williamboman/mason.nvim",
+    --         "jose-elias-alvarez/null-ls.nvim",
+    --     },
+    --     config = function()
+    --         require("mason-null-ls").setup({
+    --             ensure_installed = { "black" }
+    --         })
+    --     end,
+    -- },
     {
         'hrsh7th/nvim-cmp',
         config = function()
