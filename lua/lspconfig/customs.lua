@@ -61,7 +61,7 @@ require("lspconfig").ltex.setup {
     capabilities = lsp_capabilities,
     on_attach = function(client, bufnr)
         require("ltex_extra").setup {
-            load_langs = { "en-GB", "en-US" },
+            load_langs = { "en-GB", "en-US", "nl-NL" },
             init_check = true,
             path = os.getenv("HOME") .. "/.config/nvim/spell",
             log_level = "none",
