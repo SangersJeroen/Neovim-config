@@ -1,20 +1,9 @@
 return {
     {
         'mfussenegger/nvim-dap',
+        event = 'VeryLazy',
         config = function()
-            local dap, dapui = require("dap"), require("dapui")
-            dap.listeners.before.attach.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.launch.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                dapui.close()
-            end
+            local dap = require("dap")
 
             vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
             vim.keymap.set('n', '<leader>dc', dap.continue, { desc = "DAP Continue" })
@@ -36,7 +25,12 @@ return {
             'mfussenegger/nvim-dap',
             'folke/neodev.nvim',
 
-        }
+        },
+        config = function ()
+            require('dapui').setup()
+            vim.keymap.set('n', '<leader>do', require('dapui').open, {desc = "DAPui Open"})
+            vim.keymap.set('n', '<leader>dx', require('dapui').close, {desc = "DAPui Close"})
+        end,
     },
     'theHamsta/nvim-dap-virtual-text',
     {
@@ -46,5 +40,19 @@ return {
                 library = { plugins = { "nvim-dap-ui" }, types = true },
             })
         end,
-    }
+    },
+    {
+        'jay-babu/mason-nvim-dap.nvim',
+        event = 'VeryLazy',
+        dependecies = {
+            'williamboman/mason.nvim',
+            'mfussenegger/nvim-dap',
+        },
+        opts = {
+            handlers = {},
+            ensure_installed = {
+                'codelldb',
+            },
+        },
+    },
 }

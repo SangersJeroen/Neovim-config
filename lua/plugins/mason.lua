@@ -7,6 +7,8 @@ return {
                 'mypy',
                 'ruff',
                 'clangd',
+                'clang-format',
+                'codelldb',
                 'lua_ls',
                 'ltex',
             }
