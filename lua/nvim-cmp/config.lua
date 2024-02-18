@@ -4,6 +4,7 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local luasnip = require('luasnip')
 
 cmp.setup({
+    preselect = cmp.PreselectMode.None,
     window = {
         documentation = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered(),
@@ -29,7 +30,7 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         -- Confirm Selection
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm(),
 
         -- Trigger Completion Menu
         ["<C-Space>"] = cmp.mapping.complete(),

@@ -1,8 +1,6 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt_local.conceallevel = 2
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -22,7 +20,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 999
 vim.opt.signcolumn = 'yes'
 vim.opt.isfname:append("@-@")
 
@@ -51,5 +49,4 @@ if vim.g.neovide then
     vim.g.neovide_scroll_animation_far_lines = 0
     vim.g.neovide_hide_mouse_when_typing = true
     vim.g.neovide_scale_factor = 1.0
-    vim.opt_local.conceallevel = 2
 end
