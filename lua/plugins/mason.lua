@@ -3,9 +3,10 @@ return {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
-                'pyright',
-                'mypy',
                 'ruff',
+                'ruff-lsp',
+                'pylyzer',
+                'python-lsp-server',
                 'clangd',
                 'clang-format',
                 'codelldb',
@@ -28,7 +29,6 @@ return {
             lsp_zero.extend_lspconfig()
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'pyright',
                     'clangd',
                     'lua_ls',
                     'ltex',
@@ -49,7 +49,6 @@ return {
                 ensure_installed = {
                     'black',
                     'ruff',
-                    'mypy',
                     'debugpy',
                 },
             })
@@ -63,26 +62,6 @@ return {
             require "lspconfig.customs"
         end,
     },
-    -- {
-    --     'jose-elias-alvarez/null-ls.nvim',
-    --     ft = { 'python' },
-    --     opts = function()
-    --         return require "null-ls.customs"
-    --     end,
-    -- },
-    -- {
-    --     "jay-babu/mason-null-ls.nvim",
-    --     event = { "BufReadPre", "BufNewFile" },
-    --     dependencies = {
-    --         "williamboman/mason.nvim",
-    --         "jose-elias-alvarez/null-ls.nvim",
-    --     },
-    --     config = function()
-    --         require("mason-null-ls").setup({
-    --             ensure_installed = { "black" }
-    --         })
-    --     end,
-    -- },
     {
         'hrsh7th/nvim-cmp',
         config = function()

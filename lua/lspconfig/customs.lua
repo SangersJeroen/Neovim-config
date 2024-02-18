@@ -5,38 +5,73 @@ local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local get_servers = require('mason-lspconfig').get_installed_servers
 
-for _, server_name in ipairs(get_servers()) do
-    lspconfig[server_name].setup({
-        capabilities = lsp_capabilities,
-    })
-end
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP Actions',
+    callback = function(event)
+        local bufopts = { buffer = event.buf }
+        vim.keymap.set("i", "gs", function() vim.lsp.buf.signature_help() end, bufopts)
+        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
 
-lspconfig.pyright.setup({
-    capabilities = lsp_capabilities,
-    filetype = { "python" },
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
+        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, bufopts)
+        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, bufopts)
+        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, bufopts)
+
+        vim.keymap.set("n", "<Space>c", function() vim.diagnostic.goto_prev() end, bufopts)
+        vim.keymap.set("n", "<Space>v", function() vim.diagnostic.goto_next() end, bufopts)
+        vim.keymap.set("n", "<C-x>", function() vim.lsp.buf.code_action() end, bufopts)
+
+        vim.keymap.set('n', '<space>wa', function() vim.lsp.buf.add_workspace_folder() end, bufopts)
+        vim.keymap.set('n', '<space>wr', function() vim.lsp.buf.remove_workspace_folder() end, bufopts)
+        vim.keymap.set('n', '<space>wl', function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
+
+        vim.keymap.set('n', '<space>D', function() vim.lsp.buf.type_definition() end, bufopts)
+        vim.keymap.set('n', '<space>rn', function() vim.lsp.buf.rename() end, bufopts)
+        vim.keymap.set('n', '<M-p>', function() vim.lsp.buf.format() end, bufopts)
+    end
 })
 
-local on_attach_ruff = function(client, bufnr)
-    client.server_capabilities.hoverProvider = false
-end
 
+-- LUA
+lspconfig.lua_ls.setup({
+    capabilities = lsp_capabilities,
+    on_attach = on_attach,
+})
+
+
+-- PYTHON
 lspconfig.ruff_lsp.setup({
     capabilities = lsp_capabilities,
-    on_attach = on_attach_ruff,
+    on_attach = on_attach,
 })
 
--- require("mason-null-ls").setup({
---     capabilities = lsp_capabilities,
---     ensure_installed = { "black" }
--- })
---
--- local null_ls = require("null-ls")
---
--- null_ls.setup({
---   sources = {
---     null_ls.builtins.formatting.black,
---   },
--- })
+lspconfig.pylyzer.setup({
+    capabilities = lsp_capabilities,
+    on_attach = on_attach,
+})
+
+lspconfig.pylsp.setup {
+    on_attach = on_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                -- formatter options
+                black = { enabled = true },
+                -- linter options
+                pylint = { enabled = true, executable = "pylint" },
+                -- type checker
+                pylsp_mypy = { enabled = true },
+                -- auto-completion options
+                pyls_isort = { enabled = true },
+            },
+        },
+    },
+    capabilities = lsp_capabilities,
+}
+
+
 -- LaTeX LANGUAGE SERVERS CONFIGURATION
 require("lspconfig").ltex.setup {
     capabilities = lsp_capabilities,
@@ -57,13 +92,13 @@ require("lspconfig").ltex.setup {
 }
 
 -- Markdown LANGUAGE SERVERS CONFIGURATION
-lspconfig.marksman.setup{
+lspconfig.marksman.setup {
     capabilities = lsp_capabilities,
 }
 
 --- C/C++ LANGUAGE SERVER CONFIGURATION
-require("lspconfig").clangd.setup{
-    on_attach = function (client, bufnr)
+require("lspconfig").clangd.setup {
+    on_attach = function(client, bufnr)
         client.server_capabilities.signatureHelpProvider = false
     end,
     capabilities = lsp_capabilities,
