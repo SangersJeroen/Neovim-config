@@ -16,6 +16,7 @@ require('jeroens')
 require('plugins')
 
 vim.o.encoding = 'UTF-8'
+vim.opt.conceallevel = 2
 
 require("lazy").setup('plugins')
 
