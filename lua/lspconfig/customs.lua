@@ -47,10 +47,10 @@ lspconfig.ruff_lsp.setup({
     on_attach = on_attach,
 })
 
-lspconfig.pylyzer.setup({
-    capabilities = lsp_capabilities,
-    on_attach = on_attach,
-})
+-- lspconfig.pylyzer.setup({
+--     capabilities = lsp_capabilities,
+--     on_attach = on_attach,
+-- })
 
 lspconfig.pylsp.setup {
     on_attach = on_attach,
