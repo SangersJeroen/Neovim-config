@@ -1,4 +1,5 @@
 return {
+    'tpope/vim-sleuth',
     'tpope/vim-dispatch',
     -- {
     --     'rebelot/kanagawa.nvim',
