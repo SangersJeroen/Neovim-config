@@ -1,19 +1,19 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        opts = {
-            ensure_installed = { "c", "lua", "vim", "help", "python", "latex", "markdown", "cpp" },
-            sync_install = false,
-            auto_install = true,
-            ignore_install = { "javascript" },
-            highlight = {
-                enable = true,
-                disable = { "latex" },
-                additional_vim_regex_highlighting = false
-            },
-            indent = { enable = true }
-        }
+        build = ':TSUpdate',
+        config = function()
+            require('nvim-treesitter.configs').setup {
+                ensure_installed = { "c", "lua", "vim", "python", "latex", "markdown", "cpp" },
+                auto_install = true,
+                ignore_install = { "javascript", "help" },
+                highlight = {
+                    enable = true,
+                    disable = { "latex" },
+                },
+                indent = { enable = true }
+            }
+        end
     },
-
     'nvim-treesitter/playground'
 }

@@ -1,60 +1,6 @@
 return {
     'tpope/vim-sleuth',
     'tpope/vim-dispatch',
-    -- {
-    --     'rebelot/kanagawa.nvim',
-    --     config = function()
-    --         require('kanagawa').setup()
-    --         vim.cmd("colorscheme kanagawa")
-    --     end,
-    -- },
-    -- {
-    --     "catppuccin/nvim",
-    --     name = "catppuccin",
-    --     priority = 1000,
-    --     config = function()
-    --         require("catppuccin").setup({
-    --             flavour = "mocha", -- latte, frappe, macchiato, mocha
-    --             background = {     -- :h background
-    --                 light = "latte",
-    --                 dark = "mocha",
-    --             },
-    --             dim_inactive = {
-    --                 enabled = true,          -- dims the background color of inactive window
-    --                 shade = "dark",
-    --                 percentage = 0.15,       -- percentage of the shade to apply to the inactive window
-    --             },
-    --             styles = {                   -- Handles the styles of general hi groups (see `:h highlight-args`):
-    --                 comments = { "italic" }, -- Change the style of comments
-    --                 conditionals = { "italic" },
-    --                 loops = {},
-    --                 functions = {},
-    --                 keywords = {},
-    --                 strings = {},
-    --                 variables = {},
-    --                 numbers = {},
-    --                 booleans = {},
-    --                 properties = {},
-    --                 types = {},
-    --                 operators = {},
-    --             },
-    --             integrations = {
-    --                 cmp = true,
-    --                 gitsigns = true,
-    --                 nvimtree = true,
-    --                 treesitter = false,
-    --                 notify = false,
-    --                 mini = {
-    --                     enabled = true,
-    --                     indentscope_color = "",
-    --                 },
-    --             },
-    --         })
-    --
-    --         -- setup must be called before loading
-    --         vim.cmd.colorscheme "catppuccin"
-    --     end
-    -- },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -83,17 +29,6 @@ return {
                 hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
                 dim_inactive = true,              -- dims inactive windows
                 lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
-
-                --- You can override specific color groups to use other groups or a hex color
-                --- function will be called with a ColorScheme table
-                ---@param colors ColorScheme
-                on_colors = function(colors) end,
-
-                --- You can override specific highlights to use other groups or a hex color
-                --- function will be called with a Highlights and ColorScheme table
-                ---@param highlights Highlights
-                ---@param colors ColorScheme
-                on_highlights = function(highlights, colors) end,
             })
         end
     },

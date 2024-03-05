@@ -49,6 +49,7 @@ return {
                 ensure_installed = {
                     'black',
                     'ruff',
+                    'mypy',
                     'debugpy',
                 },
             })

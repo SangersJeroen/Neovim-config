@@ -3,13 +3,12 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.extend_lspconfig()
 local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-local get_servers = require('mason-lspconfig').get_installed_servers
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP Actions',
     callback = function(event)
         local bufopts = { buffer = event.buf }
-        vim.keymap.set("i", "gs", function() vim.lsp.buf.signature_help() end, bufopts)
+        vim.keymap.set("i", "xgs", function() vim.lsp.buf.signature_help() end, bufopts)
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
 
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
@@ -42,10 +41,10 @@ lspconfig.lua_ls.setup({
 
 
 -- PYTHON
-lspconfig.ruff_lsp.setup({
-    capabilities = lsp_capabilities,
-    on_attach = on_attach,
-})
+-- lspconfig.ruff_lsp.setup({
+--     capabilities = lsp_capabilities,
+--     on_attach = on_attach,
+-- })
 
 -- lspconfig.pylyzer.setup({
 --     capabilities = lsp_capabilities,
@@ -65,8 +64,16 @@ lspconfig.pylsp.setup {
                 pylsp_mypy = { enabled = true },
                 -- auto-completion options
                 pyls_isort = { enabled = true },
+                -- linter
+                ruff = {
+                    enabled = true,
+                    lineLength = 120,
+                },
             },
         },
+    },
+    flags = {
+        debounce_text_changes = 200,
     },
     capabilities = lsp_capabilities,
 }
