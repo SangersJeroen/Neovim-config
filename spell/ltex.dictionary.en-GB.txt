@@ -48,3 +48,4 @@ excitonic
 unscattered
 wavefunction
 heterostrain
+PyGPA

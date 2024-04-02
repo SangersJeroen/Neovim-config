@@ -98,6 +98,11 @@ require("lspconfig").ltex.setup {
     }
 }
 
+require('lspconfig').texlab.setup {
+    capabilities = lsp_capabilities,
+    on_attach = on_attach
+}
+
 -- Markdown LANGUAGE SERVERS CONFIGURATION
 lspconfig.marksman.setup {
     capabilities = lsp_capabilities,
