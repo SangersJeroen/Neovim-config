@@ -5,13 +5,7 @@ return {
             ensure_installed = {
                 'ruff',
                 'ruff-lsp',
-                -- 'pylyzer',
                 'python-lsp-server',
-                'clangd',
-                'clang-format',
-                'codelldb',
-                'lua_ls',
-                'ltex',
             }
         },
         config = function()
@@ -29,9 +23,6 @@ return {
             lsp_zero.extend_lspconfig()
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    'clangd',
-                    'lua_ls',
-                    'ltex',
                 },
                 handlers = {
                     lsp_zero.default_setup,

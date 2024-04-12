@@ -54,10 +54,6 @@ return {
         end
     },
 
-    -- Pluggins for LaTeX editting
-    'lervag/vimtex',
-    'barreiroleo/ltex-extra.nvim',
-
     {
         'theprimeagen/harpoon',
         config = function()
@@ -78,16 +74,6 @@ return {
         end,
     },
 
-    {
-        'Exafunction/codeium.vim',
-        config = function()
-            vim.keymap.set('i', '<c-c>', function() return vim.fn["codeium#Complete"]() end, { expr = true })
-            vim.keymap.set('i', '<M-a>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-            vim.keymap.set('i', '<M-j>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-            vim.keymap.set('i', '<M-k>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-            vim.keymap.set('i', '<M-h>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-        end,
-    },
     "anuvyklack/hydra.nvim",
 
     {
@@ -109,15 +95,6 @@ return {
     },
 
     "folke/which-key.nvim",
-    -- "linux-cultist/venv-selector.nvim",
-
-    {
-        "epwalsh/obsidian.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        }
-    },
-    { "toppair/peek.nvim", build = 'deno task --quiet build:fast' },
 
     {
         "christoomey/vim-tmux-navigator",
@@ -129,65 +106,6 @@ return {
         end,
     },
     "lukas-reineke/indent-blankline.nvim",
-    -- {
-    --     'norcalli/nvim-colorizer.lua',
-    --     config = function()
-    --         require('colorizer').setup()
-    --     end,
-    -- },
-    {
-        "cshuaimin/ssr.nvim",
-        module = "ssr",
-        -- Calling setup is optional.
-        config = function()
-            require("ssr").setup {
-                border = "rounded",
-                min_width = 50,
-                min_height = 5,
-                max_width = 120,
-                max_height = 25,
-                keymaps = {
-                    close = "q",
-                    next_match = "n",
-                    prev_match = "N",
-                    replace_confirm = "<cr>",
-                    replace_all = "<leader><cr>",
-                },
-            }
-            vim.keymap.set({ "n", "x" }, "<leader>r", function() require("ssr").open() end)
-        end
-    },
-
-    {
-        'glacambre/firenvim',
-        build = function() vim.fn['firenvim#install'](0) end
-    },
-
-
-    {
-        "andrewferrier/wrapping.nvim",
-        config = function()
-            local options = {
-                create_keymappings = false,
-                auto_set_mode_filetype_allowlist = {
-                    "asciidoc",
-                    "gitcommit",
-                    "latex",
-                    "mail",
-                    "markdown",
-                    "rst",
-                    "tex",
-                    "text",
-                },
-                auto_set_mode_heuristically = false
-            }
-
-            require("wrapping").setup(options)
-
-            vim.keymap.set("n", "<leader>ww", '<cmd>HardWrapMode<CR>')
-            vim.keymap.set("n", "<leader>WW", '<cmd>ToggleWrapMode<CR>')
-        end,
-    },
 
     {
         'andymass/vim-matchup',
