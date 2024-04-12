@@ -11,12 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 require('jeroens')
 require('plugins')
 
 vim.o.encoding = 'UTF-8'
 vim.opt.conceallevel = 2
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 require("lazy").setup('plugins')
-
