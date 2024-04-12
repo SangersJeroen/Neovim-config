@@ -5,7 +5,7 @@ vim.g.tex_flavor = 'lualatex'
 vim.g.vimtex_format_enabled = true
 
 vim.g.maplocalleader = '\\'
-vim.g.vimtex_view_sioyek_exe = '/home/jeroensangers/.local/bin/Sioyek.AppImage'
+vim.g.vimtex_view_sioyek_exe = '/home/jeroensangers/.local/bin/sioyek/sioyek'
 vim.g.vimtex_view_method = 'sioyek'
 
 vim.opt_local.expandtab = true

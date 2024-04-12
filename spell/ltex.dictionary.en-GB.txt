@@ -49,3 +49,6 @@ unscattered
 wavefunction
 heterostrain
 PyGPA
+Lazić
+multichem
+MGIS
