@@ -58,7 +58,7 @@ return {
         dependecies = {
             'mfussenegger/nvim-dap',
             'folke/neodev.nvim',
-
+            'nvim-neotest/nvim-nio',
         },
         config = function ()
             require('dapui').setup()
@@ -89,4 +89,5 @@ return {
             },
         },
     },
+    'nvim-neotest/nvim-nio',
 }

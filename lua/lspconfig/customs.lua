@@ -41,10 +41,16 @@ lspconfig.lua_ls.setup({
 
 
 -- PYTHON
--- lspconfig.ruff_lsp.setup({
---     capabilities = lsp_capabilities,
---     on_attach = on_attach,
--- })
+local on_attach_ruff = function(client, bufnr)
+  if client.name == 'ruff_lsp' then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
+  end
+end
+
+require('lspconfig').ruff_lsp.setup {
+  on_attach = on_attach_ruff,
+}
 
 -- lspconfig.pylyzer.setup({
 --     capabilities = lsp_capabilities,
@@ -58,8 +64,6 @@ lspconfig.pylsp.setup {
             plugins = {
                 -- formatter options
                 black = { enabled = true },
-                -- linter options
-                pylint = { enabled = true, executable = "pylint" },
                 -- type checker
                 pylsp_mypy = { enabled = true },
                 -- auto-completion options
