@@ -37,6 +37,7 @@ return {
                     lsp_zero.default_setup,
                 }
             })
+            require "lspconfig.customs"
         end,
     },
     {
@@ -57,11 +58,6 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
-        config = function()
-            local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig()
-            require "lspconfig.customs"
-        end,
     },
     {
         'hrsh7th/nvim-cmp',
