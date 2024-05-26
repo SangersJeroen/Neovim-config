@@ -53,3 +53,13 @@ Lazić
 multichem
 MGIS
 homostructure
+colorbalance
+Moticam
+ThorSpectra
+Köhler
+EELSFitter
+FluCam
+stigmators
+hBN
+SAED
+athmosphere
