@@ -4,12 +4,19 @@ return {
         event = "VeryLazy",
         opts = {
             backend = "kitty", -- whatever backend you would like to use
-            max_width = 100,
-            max_height = 12,
-            max_height_window_percentage = math.huge,
-            max_width_window_percentage = math.huge,
-            window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
-            window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+            -- max_width = 70,
+            -- max_height = 40,
+            max_width_window_percentage = 100,
+            max_height_window_percentage = 50,
+            integrations = {
+                markdown = {
+                    enabled = true,
+                    clear_in_insert_mode = false,
+                    download_remote_images = false,
+                    only_render_image_at_cursor = false,
+                    filetypes = {"markdown"},
+                },
+            },
         },
     },
     {
@@ -17,21 +24,21 @@ return {
         dependencies = { "image.nvim" },
         build = ":UpdateRemotePlugins",
         event = "VeryLazy",
+        ft = 'python',
+        keys = {
+            { "<leader>mi",  "<cmd>MoltenInit<cr>",              mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
+            { "<leader>mf",  "<cmd>MoltenImagePopup<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
+            { "<leader>mc",  "<cmd>MoltenEvalutateCell<cr>",     mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
+            { "<leader>mv",  "<cmd>MoltenEvaluateVisual<cr>",    mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
+            { "<leader>mh",  "<cmd>MoltenHideOutput<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
+            { "<leader>ms",  "<cmd>MoltenShowOutput<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
+            { "<leader>me",  "<cmd>:noautocmd MoltenEnterOutput<cr>",       mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
+        },
         init = function()
             vim.g.molten_image_provider = "image.nvim"
-            vim.g.moltend_output_win_max_height = 20
-            -- I find auto open annoying, keep in mind setting this option will require setting
-            -- a keybind for `:noautocmd MoltenEnterOutput` to open the output again
-            vim.g.molten_auto_open_output = false
-
-            -- optional, I like wrapping. works for virt text and the output window
+            vim.g.molten_auto_open_output = true
             vim.g.molten_wrap_output = true
-
-            -- Output as virtual text. Allows outputs to always be shown, works with images, but can
-            -- be buggy with longer images
-            vim.g.molten_virt_text_output = true
-
-            -- this will make it so the output shows up below the \`\`\` cell delimiter
+            vim.g.molten_virt_text_output = false
             vim.g.molten_virt_lines_off_by_1 = true
         end
     },
@@ -40,8 +47,8 @@ return {
         keys = {
             { "]h",        function() require("notebook-navigator").move_cell "d" end },
             { "[h",        function() require("notebook-navigator").move_cell "u" end },
-            { "<leader>a", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
-            { "<leader>A", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
+            { "<leader>e", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
+            { "<leader>E", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
         },
         dependencies = {
             "echasnovski/mini.comment",
@@ -56,9 +63,31 @@ return {
     },
     {
         "GCBallesteros/jupytext.nvim",
+        config = function ()
+            require('jupytext').setup()
+        end
+    },
+    {
+        "echasnovski/mini.ai",
+        event = "VeryLazy",
+        dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
+        opts = function()
+            local nn = require "notebook-navigator"
+
+            local opts = { custom_textobjects = { h = nn.miniai_spec } }
+            return opts
+        end,
     },
     {
         "echasnovski/mini.hipatterns",
+        event = "VeryLazy",
+        dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
+        opts = function()
+            local nn = require "notebook-navigator"
+
+            local opts = { highlighters = { cells = nn.minihipatterns_spec } }
+            return opts
+        end,
         config = function()
             local hipatterns = require('mini.hipatterns')
             hipatterns.setup({

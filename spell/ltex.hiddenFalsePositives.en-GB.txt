@@ -3,3 +3,4 @@
 {"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QThe properties of TMDCs depend greatly on the amount of stacked layers and with individual layers being as thin as 6.5 for MoS_2 these materials are often referred to as layered or two-dimensional materials.\\E$"}
 {"rule":"COPY_PASTE","sentence":"^\\QNeovim copy paste\nAction Mode Keybinding Tag\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QDectris Arina\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Qstrain-W-MoSe2-009.dmw 40k\\E$"}
