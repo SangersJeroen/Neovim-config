@@ -32,7 +32,7 @@ return {
             { "<leader>mv",  "<cmd>MoltenEvaluateVisual<cr>",    mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
             { "<leader>mh",  "<cmd>MoltenHideOutput<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
             { "<leader>ms",  "<cmd>MoltenShowOutput<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
-            { "<leader>me",  "<cmd>:noautocmd MoltenEnterOutput<cr>",       mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
+            { "<leader>me",  "<cmd>:noautocmd MoltenEnterOutput<cr>",       mode = 'n', ft = 'python', desc = '[M]olten [E]nter output' },
         },
         init = function()
             vim.g.molten_image_provider = "image.nvim"
