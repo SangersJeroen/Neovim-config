@@ -4,10 +4,10 @@ return {
         event = "VeryLazy",
         opts = {
             backend = "kitty", -- whatever backend you would like to use
-            -- max_width = 70,
-            -- max_height = 40,
-            max_width_window_percentage = 100,
-            max_height_window_percentage = 50,
+            max_width = 70,
+            max_height = 12,
+            max_width_window_percentage = math.huge,
+            max_height_window_percentage = math.huge,
             integrations = {
                 markdown = {
                     enabled = true,

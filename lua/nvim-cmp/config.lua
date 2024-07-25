@@ -57,8 +57,3 @@ cmp.setup({
         { name = 'buffer' },
     })
 })
-
----
--- Autocomplete
----
--- vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

@@ -34,4 +34,4 @@ vim.keymap.set("n", "k", "gk")
 vim.keymap.set('n', '<M-v>', '<cmd>vsplit<CR>')
 vim.keymap.set('n', '<M-s>', '<cmd>split<CR>')
 
-vim.keymap.set('i', 'jj', '<Esc>')
+vim.keymap.set('i', 'jk', '<Esc>')
