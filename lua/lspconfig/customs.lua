@@ -42,14 +42,23 @@ lspconfig.lua_ls.setup({
 
 -- PYTHON
 local on_attach_ruff = function(client, bufnr)
-  if client.name == 'ruff_lsp' then
-    -- Disable hover in favor of Pyright
-    client.server_capabilities.hoverProvider = false
-  end
+    if client.name == 'ruff_lsp' then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+    end
+end
+
+local venv_path = os.getenv('VIRTUAL_ENV')
+local py_path = nil
+-- decide which python executable to use for mypy
+if venv_path ~= nil then
+    py_path = venv_path .. "/bin/python3"
+else
+    py_path = vim.g.python3_host_prog
 end
 
 require('lspconfig').ruff_lsp.setup {
-  on_attach = on_attach_ruff,
+    on_attach = on_attach_ruff,
 }
 
 -- lspconfig.pylyzer.setup({
@@ -58,14 +67,16 @@ require('lspconfig').ruff_lsp.setup {
 -- })
 
 lspconfig.pylsp.setup {
-    on_attach = on_attach,
     settings = {
         pylsp = {
             plugins = {
                 -- formatter options
                 black = { enabled = true },
                 -- type checker
-                pylsp_mypy = { enabled = true },
+                pylsp_mypy = { enabled = true,
+                    overrides = { "--python-executable", py_path, true },
+                    report_progress = true,
+                    live_mode = false },
                 -- auto-completion options
                 pyls_isort = { enabled = true },
                 -- linter
