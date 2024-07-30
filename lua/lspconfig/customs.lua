@@ -118,11 +118,6 @@ require("lspconfig").ltex.setup {
 --     on_attach = on_attach
 -- }
 
--- Markdown LANGUAGE SERVERS CONFIGURATION
-lspconfig.marksman.setup {
-    capabilities = lsp_capabilities,
-}
-
 --- C/C++ LANGUAGE SERVER CONFIGURATION
 require("lspconfig").clangd.setup {
     on_attach = function(client, bufnr)

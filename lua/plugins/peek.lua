@@ -5,7 +5,7 @@ return {
     config = function()
         require("peek").setup({
             auto_load = true,        -- whether to automatically load preview when
-                                     -- entering another markdown buffer
+            -- entering another markdown buffer
             close_on_bdelete = true, -- close preview window on buffer delete
 
             syntax = true,           -- enable syntax highlighting, affects performance

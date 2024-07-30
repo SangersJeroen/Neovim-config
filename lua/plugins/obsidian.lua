@@ -119,14 +119,6 @@ return {
                 substitutions = {},
             },
 
-            -- Optional, customize the backlinks interface.
-            backlinks = {
-                -- The default height of the backlinks pane.
-                height = 10,
-                -- Whether or not to wrap lines.
-                wrap = true,
-            },
-
             -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
             -- URL it will be ignored but you can customize this behavior here.
             follow_url_func = function(url)

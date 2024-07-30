@@ -5,7 +5,6 @@ return {
             ensure_installed = {
                 'ruff',
                 'ruff-lsp',
-                -- 'pylyzer',
                 'python-lsp-server',
                 'clangd',
                 'clang-format',

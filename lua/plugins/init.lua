@@ -114,27 +114,7 @@ return {
             vim.keymap.set('n', '<M-f>', function() hop.hint_words() end)
         end,
     },
-
     "folke/which-key.nvim",
-    -- "linux-cultist/venv-selector.nvim",
-    {
-        {
-            "lukas-reineke/headlines.nvim",
-            dependencies = "nvim-treesitter/nvim-treesitter",
-            config = true, -- or `opts = {}`
-            lazy = true,
-            ft = 'markdown',
-        },
-    },
-    {
-        "epwalsh/obsidian.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-        lazy = true,
-    },
-    { "toppair/peek.nvim", build = 'deno task --quiet build:fast' },
-
     {
         "christoomey/vim-tmux-navigator",
         config = function()
