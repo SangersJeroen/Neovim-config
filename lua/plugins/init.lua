@@ -127,12 +127,6 @@ return {
 
     "lukas-reineke/indent-blankline.nvim",
     {
-        'glacambre/firenvim',
-        build = function() vim.fn['firenvim#install'](0) end
-    },
-
-
-    {
         "andrewferrier/wrapping.nvim",
         config = function()
             local options = {

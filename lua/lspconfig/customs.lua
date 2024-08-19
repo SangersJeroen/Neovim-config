@@ -66,6 +66,8 @@ require('lspconfig').ruff_lsp.setup {
 --     on_attach = on_attach,
 -- })
 
+-- Markdown
+
 lspconfig.pylsp.setup {
     settings = {
         pylsp = {
@@ -73,7 +75,7 @@ lspconfig.pylsp.setup {
                 -- formatter options
                 black = { enabled = true },
                 -- type checker
-                pylsp_mypy = { enabled = true,
+                pylsp_mypy = { enabled = false,
                     overrides = { "--python-executable", py_path, true },
                     report_progress = true,
                     live_mode = false },
