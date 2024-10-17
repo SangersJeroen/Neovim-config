@@ -191,5 +191,13 @@ return {
                 -- Configuration here, or leave empty to use defaults
             })
         end
+    },
+    {
+        'f3fora/nvim-texlabconfig',
+        config = function()
+            require('texlabconfig').setup()
+        end,
+        ft = { 'tex', 'bib' },
+        build = 'go build'
     }
 }
