@@ -35,3 +35,5 @@ vim.keymap.set('n', '<M-v>', '<cmd>vsplit<CR>')
 vim.keymap.set('n', '<M-s>', '<cmd>split<CR>')
 
 vim.keymap.set('i', 'jk', '<Esc>')
+
+vim.keymap.set('v', '<leader>sa', ":s/:[^,]*[, \\|*^)]/=,\\r/g")
