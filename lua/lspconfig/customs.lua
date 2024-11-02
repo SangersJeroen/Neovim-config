@@ -115,9 +115,23 @@ require("lspconfig").ltex.setup {
     }
 }
 
-require('lspconfig').texlab.setup{
+require('lspconfig').texlab.setup {
     capabilities = lsp_capabilities,
     on_attach = on_attach,
+    setting = {
+        texlab = {
+            forwardSearch = {
+                executable = 'sioyek',
+                args = {
+                    '--reuse-window',
+                    '--execute-command', 'toggle_synctex', -- Open Sioyek in synctex mode.
+                    '--inverse-search',
+                    [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
+                    '--forward-search-file', '%f',
+                    '--forward-search-line', '%l', '%p' },
+            },
+        },
+    },
 }
 
 -- require('lspconfig').texlab.setup {
