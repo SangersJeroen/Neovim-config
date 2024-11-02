@@ -2,6 +2,7 @@ return {
     {
         '3rd/image.nvim',
         event = "VeryLazy",
+        enabled = function () return not vim.g.neovide end,
         opts = {
             backend = "kitty", -- whatever backend you would like to use
             max_width = 70,
