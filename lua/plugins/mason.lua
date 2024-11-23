@@ -31,6 +31,7 @@ return {
                     'clangd',
                     'lua_ls',
                     'ltex',
+                    'rust-analyzer',
                 },
                 handlers = {
                     lsp_zero.default_setup,
