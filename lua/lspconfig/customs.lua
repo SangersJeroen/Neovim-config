@@ -42,7 +42,7 @@ lspconfig.lua_ls.setup({
 
 -- PYTHON
 local on_attach_ruff = function(client, bufnr)
-    if client.name == 'ruff_lsp' then
+    if client.name == 'ruff' then
         -- Disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
     end
@@ -57,7 +57,7 @@ else
     py_path = vim.g.python3_host_prog
 end
 
-require('lspconfig').ruff_lsp.setup {
+require('lspconfig').ruff.setup {
     on_attach = on_attach_ruff,
 }
 
@@ -146,3 +146,16 @@ require("lspconfig").clangd.setup {
     end,
     capabilities = lsp_capabilities,
 }
+
+--- Rust configuration
+lspconfig.rust_analyzer.setup({
+    on_attach = on_attach,
+    capabilities = lsp_capabilities,
+    filetypes = { 'rust' },
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = { allFeatures = true, },
+        },
+    },
+}
+)

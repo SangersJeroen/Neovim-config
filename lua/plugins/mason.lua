@@ -4,13 +4,13 @@ return {
         opts = {
             ensure_installed = {
                 'ruff',
-                'ruff-lsp',
                 'python-lsp-server',
                 'clangd',
                 'clang-format',
                 'codelldb',
                 'lua_ls',
                 'ltex',
+                'rust-analyzer',
             }
         },
         config = function()
@@ -31,7 +31,6 @@ return {
                     'clangd',
                     'lua_ls',
                     'ltex',
-                    'rust-analyzer',
                 },
                 handlers = {
                     lsp_zero.default_setup,
