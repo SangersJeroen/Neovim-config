@@ -158,8 +158,9 @@ return {
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
         end
     },
-
-    'echasnovski/mini.nvim',
+    {
+        'echasnovski/mini.nvim',
+    },
     {
         "sustech-data/wildfire.nvim",
         config = function()
@@ -199,5 +200,16 @@ return {
         end,
         ft = { 'tex', 'bib' },
         build = 'go build'
-    }
+    },
+    {
+        'stevearc/quicker.nvim',
+        event = "FileType qf",
+        opts = {},
+        config = function()
+            require("quicker").setup()
+        end
+    },
+    {
+        "shortcuts/no-neck-pain.nvim"
+    },
 }

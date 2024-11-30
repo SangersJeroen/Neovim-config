@@ -148,14 +148,18 @@ require("lspconfig").clangd.setup {
 }
 
 --- Rust configuration
-lspconfig.rust_analyzer.setup({
-    on_attach = on_attach,
-    capabilities = lsp_capabilities,
-    filetypes = { 'rust' },
-    settings = {
-        ['rust-analyzer'] = {
-            cargo = { allFeatures = true, },
-        },
-    },
-}
-)
+-- lspconfig.rust_analyzer.setup({
+--     on_attach = function (client, bufnr)
+--         vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+--     end,
+--     capabilities = lsp_capabilities,
+--     filetypes = { 'rust' },
+--     settings = {
+--         ['rust-analyzer'] = {
+--             cargo = { allFeatures = true, },
+--             check = { command = "clippy" },
+--             diagnositcs = { enable = true },
+--         },
+--     },
+-- }
+-- )

@@ -57,6 +57,9 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
+        config = function()
+            require "lspconfig.customs"
+        end,
     },
     {
         'hrsh7th/nvim-cmp',
