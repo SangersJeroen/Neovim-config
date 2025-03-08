@@ -1,7 +1,5 @@
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local luasnip = require('luasnip')
 
 cmp.setup({
     preselect = cmp.PreselectMode.None,
@@ -35,30 +33,14 @@ cmp.setup({
         -- Trigger Completion Menu
         ["<C-Space>"] = cmp.mapping.complete(),
 
-        --  Navigating up and down the list
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-
-        -- Navigating between snippet placeholders
-        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-
         -- Scroll up and down in the completion documentation
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = "codeium" },
-        { name = 'luasnip' },
         { name = 'path' },
     }, {
         { name = 'buffer' },
     })
 })
-
----
--- Autocomplete
----
--- vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

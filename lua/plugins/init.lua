@@ -74,8 +74,6 @@ return {
         end,
     },
 
-    "anuvyklack/hydra.nvim",
-
     {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
@@ -105,8 +103,6 @@ return {
             vim.keymap.set({ 'n', 'v', 'i' }, '<C-k>', "<cmd> TmuxNavigateUp<CR>")
         end,
     },
-    "lukas-reineke/indent-blankline.nvim",
-
     {
         'andymass/vim-matchup',
         config = function()
@@ -114,28 +110,4 @@ return {
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
         end
     },
-
-    'echasnovski/mini.nvim',
-    {
-        "sustech-data/wildfire.nvim",
-        config = function()
-            opts = {
-                {
-                    surrounds = {
-                        { "(", ")" },
-                        { "{", "}" },
-                        { "<", ">" },
-                        { "[", "]" },
-                    },
-                    keymaps = {
-                        init_selection = "<CR>",
-                        node_incremental = "<CR>",
-                        node_decremental = "<BS>",
-                    },
-                    filetype_exclude = { "qf" }, --keymaps will be unset in excluding filetypes
-                }
-            }
-            require("wildfire").setup(opts)
-        end,
-    }
 }
