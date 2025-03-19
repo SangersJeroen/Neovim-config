@@ -2,7 +2,7 @@ return {
     {
         '3rd/image.nvim',
         event = "VeryLazy",
-        enabled = function () return not vim.g.neovide end,
+        enabled = function() return not vim.g.neovide end,
         opts = {
             backend = "kitty", -- whatever backend you would like to use
             max_width = 70,
@@ -15,7 +15,7 @@ return {
                     clear_in_insert_mode = false,
                     download_remote_images = false,
                     only_render_image_at_cursor = false,
-                    filetypes = {"markdown"},
+                    filetypes = { "markdown" },
                 },
             },
         },
@@ -27,13 +27,13 @@ return {
         event = "VeryLazy",
         ft = 'python',
         keys = {
-            { "<leader>mi",  "<cmd>MoltenInit<cr>",              mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
-            { "<leader>mf",  "<cmd>MoltenImagePopup<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
-            { "<leader>mc",  "<cmd>MoltenEvalutateCell<cr>",     mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
-            { "<leader>mv",  "<cmd>MoltenEvaluateVisual<cr>",    mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
-            { "<leader>mh",  "<cmd>MoltenHideOutput<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
-            { "<leader>ms",  "<cmd>MoltenShowOutput<cr>",        mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
-            { "<leader>me",  "<cmd>:noautocmd MoltenEnterOutput<cr>",       mode = 'n', ft = 'python', desc = '[M]olten [E]nter output' },
+            { "<leader>mi", "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
+            { "<leader>mf", "<cmd>MoltenImagePopup<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
+            { "<leader>mc", "<cmd>MoltenEvalutateCell<cr>",          mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
+            { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>",         mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
+            { "<leader>mh", "<cmd>MoltenHideOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
+            { "<leader>ms", "<cmd>MoltenShowOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
+            { "<leader>me", "<cmd>:noautocmd MoltenEnterOutput<cr>", mode = 'n', ft = 'python', desc = '[M]olten [E]nter output' },
         },
         init = function()
             vim.g.molten_image_provider = "image.nvim"
@@ -65,7 +65,7 @@ return {
     {
         "GCBallesteros/jupytext.nvim",
         event = "VeryLazy",
-        config = function ()
+        config = function()
             require('jupytext').setup()
         end
     },
@@ -105,5 +105,34 @@ return {
                 }
             })
         end,
-    }
+    },
+    {
+        "linux-cultist/venv-selector.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+            { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+        },
+        lazy = 'VeryLazy',
+        branch = "regexp", -- This is the regexp branch, use this for the new version
+        config = function()
+            require("venv-selector").setup {
+                settings = {
+                    options = {
+                        enable_default_searches = false,
+                        debug = true,
+                    },
+                    search = {
+                        my_venvs = {
+                            command = "fdfind '/bin/python$' ~/Virtual-environments/ --full-path --color never -I",
+                        }
+                    }
+                }
+            }
+        end,
+        keys = {
+            { ",v", "<cmd>VenvSelect<cr>" },
+        },
+    },
 }
+-- %%

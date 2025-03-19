@@ -59,3 +59,7 @@ if vim.g.neovide then
         change_scale_factor(1 / 1.25)
     end)
 end
+
+-- Options for undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])

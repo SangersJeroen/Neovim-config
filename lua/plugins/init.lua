@@ -112,6 +112,9 @@ return {
             }
 
             vim.keymap.set('n', '<M-f>', function() hop.hint_words() end)
+            vim.cmd('hi HopNextKey guifg=#cac911')
+            vim.cmd('hi HopNextKey1 guifg=#01cac9')
+            vim.cmd('hi HopNextKey2 guifg=#ff06b5')
         end,
     },
     "folke/which-key.nvim",

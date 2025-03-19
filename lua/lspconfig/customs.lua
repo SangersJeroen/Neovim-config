@@ -75,10 +75,10 @@ lspconfig.pylsp.setup {
                 -- formatter options
                 black = { enabled = true },
                 -- type checker
-                pylsp_mypy = { enabled = false,
+                pylsp_mypy = { enabled = true,
                     overrides = { "--python-executable", py_path, true },
                     report_progress = true,
-                    live_mode = false },
+                    live_mode = true },
                 -- auto-completion options
                 pyls_isort = { enabled = true },
                 -- linter
@@ -163,3 +163,11 @@ require("lspconfig").clangd.setup {
 --     },
 -- }
 -- )
+--
+
+
+
+--- XML configuration
+require('lspconfig').lemminx.setup{
+    capabilities = lsp_capabilities,
+}
