@@ -121,11 +121,12 @@ require('lspconfig').texlab.setup {
     setting = {
         texlab = {
             forwardSearch = {
-                executable = 'sioyek',
+                executable = '/home/jeroensangers/.local/bin/sioyek/sioyek',
                 args = {
                     '--reuse-window',
                     '--execute-command', 'toggle_synctex', -- Open Sioyek in synctex mode.
                     '--inverse-search',
+                    '--new-instance',
                     [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
                     '--forward-search-file', '%f',
                     '--forward-search-line', '%l', '%p' },
@@ -134,10 +135,35 @@ require('lspconfig').texlab.setup {
     },
 }
 
--- require('lspconfig').texlab.setup {
---     capabilities = lsp_capabilities,
---     on_attach = on_attach
--- }
+require('lspconfig').harper_ls.setup {
+    settings = {
+        ["harper-ls"] = {
+            userDictPath = "~/.config/nvim/spell/",
+            fileDictPath = "",
+            linters = {
+                SpellCheck = true,
+                SpelledNumbers = false,
+                AnA = true,
+                SentenceCapitalization = true,
+                UnclosedQuotes = true,
+                WrongQuotes = false,
+                LongSentences = true,
+                RepeatedWords = true,
+                Spaces = true,
+                Matcher = true,
+                CorrectNumberSuffix = true
+            },
+            codeActions = {
+                ForceStable = false
+            },
+            markdown = {
+                IgnoreLinkTitle = false
+            },
+            diagnosticSeverity = "hint",
+            isolateEnglish = false
+        }
+    }
+}
 
 --- C/C++ LANGUAGE SERVER CONFIGURATION
 require("lspconfig").clangd.setup {
@@ -168,6 +194,6 @@ require("lspconfig").clangd.setup {
 
 
 --- XML configuration
-require('lspconfig').lemminx.setup{
+require('lspconfig').lemminx.setup {
     capabilities = lsp_capabilities,
 }
