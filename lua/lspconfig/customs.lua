@@ -4,6 +4,17 @@ lsp_zero.extend_lspconfig()
 local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+vim.diagnostic.config({
+    virtual_lines = {
+        current_line = true,
+    },
+})
+
+vim.lsp.config('*', {
+    capabilities = lsp_capabilities,
+    root_markers = {'.git'},
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP Actions',
     callback = function(event)
@@ -33,13 +44,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 
--- LUA
-lspconfig.lua_ls.setup({
-    capabilities = lsp_capabilities,
-    on_attach = on_attach,
-})
-
-
 -- PYTHON
 local on_attach_ruff = function(client, bufnr)
     if client.name == 'ruff' then
@@ -65,9 +69,8 @@ require('lspconfig').ruff.setup {
 --     capabilities = lsp_capabilities,
 --     on_attach = on_attach,
 -- })
-
--- Markdown
-
+--
+--
 lspconfig.pylsp.setup {
     settings = {
         pylsp = {

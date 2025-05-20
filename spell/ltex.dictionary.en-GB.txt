@@ -67,3 +67,4 @@ dmw
 Nanoprobe
 nanoprobe
 fluscreen
+wavefunctions

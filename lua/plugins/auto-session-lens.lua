@@ -2,9 +2,11 @@ return {
     {
         'rmagatti/auto-session',
         lazy = false,
+
+        ---@module "auto-session"
+        ---@type AutoSession.Config
         opts = {
             auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-            auto_save_enabled = true,
             auto_restore_enabled = true,
             session_lens = {
                 -- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first

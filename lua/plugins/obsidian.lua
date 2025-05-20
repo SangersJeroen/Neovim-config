@@ -8,7 +8,7 @@ return {
     },
     {
         "epwalsh/obsidian.nvim",
-        version = "*",     -- recommended, use latest release instead of latest commit
+        version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
         event = {
             -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
@@ -30,7 +30,7 @@ return {
                         path = "~/Shard",
                     },
                 },
-
+                { ui = { enable = false } },
                 -- Optional, if you keep notes in a specific subdirectory of your vault.
                 notes_subdir = "modica",
 
@@ -131,7 +131,7 @@ return {
                 -- URL it will be ignored but you can customize this behavior here.
                 follow_url_func = function(url)
                     -- Open the URL in the default web browser.
-                    vim.fn.jobstart({ "xdg-open", url })     -- linux
+                    vim.fn.jobstart({ "xdg-open", url }) -- linux
                 end,
 
                 -- Optional, set to true if you use the Obsidian Advanced URI plugin.
@@ -159,48 +159,11 @@ return {
                 -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
                 open_notes_in = "current",
 
-                -- Optional, configure additional syntax highlighting / extmarks.
-                ui = {
-                    enable = true,             -- set to false to disable all additional syntax features
-                    update_debounce = 200,     -- update delay after a text change (in milliseconds)
-                    -- Define how various check-boxes are displayed
-                    checkboxes = {
-                        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-                        -- [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-                        -- ["x"] = { char = "", hl_group = "ObsidianDone" },
-                        [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-                        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-                        -- Replace the above with this if you don't have a patched font:
-                        [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-                        ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-
-                        -- You can also add more custom ones...
-                    },
-                    external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-                    -- Replace the above with this if you don't have a patched font:
-                    -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-                    reference_text = { hl_group = "ObsidianRefText" },
-                    highlight_text = { hl_group = "ObsidianHighlightText" },
-                    tags = { hl_group = "ObsidianTag" },
-                    hl_groups = {
-                        -- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
-                        ObsidianTodo = { bold = true, fg = "#f78c6c" },
-                        ObsidianDone = { bold = true, fg = "#89ddff" },
-                        ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-                        ObsidianTilde = { bold = true, fg = "#ff5370" },
-                        ObsidianRefText = { underline = true, fg = "#c792ea" },
-                        ObsidianExtLinkIcon = { fg = "#c792ea" },
-                        ObsidianTag = { italic = true, fg = "#89ddff" },
-                        ObsidianHighlightText = { bg = "#75662e" },
-                    },
-                },
-
-                -- Specify how to handle attachments.
                 attachments = {
                     -- The default folder to place images in via `:ObsidianPasteImg`.
                     -- If this is a relative path it will be interpreted as relative to the vault root.
                     -- You can always override this per image by passing a full path to the command instead of just a filename.
-                    img_folder = "assets/imgs",     -- This is the default
+                    img_folder = "assets/imgs", -- This is the default
                     -- A function that determines the text to insert in the note when pasting an image.
                     -- It takes two arguments, the `obsidian.Client` and a plenary `Path` to the image file.
                     -- This is the default implementation.
