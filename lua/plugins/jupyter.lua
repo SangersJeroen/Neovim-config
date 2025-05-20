@@ -24,7 +24,6 @@ return {
         "benlubas/molten-nvim",
         dependencies = { "image.nvim" },
         build = ":UpdateRemotePlugins",
-        event = "VeryLazy",
         ft = 'python',
         keys = {
             { "<leader>mi", "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
@@ -39,34 +38,37 @@ return {
             vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_auto_open_output = true
             vim.g.molten_wrap_output = true
-            vim.g.molten_virt_text_output = false
+            vim.g.molten_virt_text_output = true
             vim.g.molten_virt_lines_off_by_1 = true
+            vim.g.molten_image_location = "float"
         end
     },
-    -- {
-    --     "GCBallesteros/NotebookNavigator.nvim",
-    --     keys = {
-    --         { "]h",        function() require("notebook-navigator").move_cell "d" end },
-    --         { "[h",        function() require("notebook-navigator").move_cell "u" end },
-    --         { "<leader>e", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
-    --         { "<leader>E", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
-    --     },
-    --     dependencies = {
-    --         "echasnovski/mini.comment",
-    --         "benlubas/molten-nvim",
-    --         "anuvyklack/hydra.nvim",
-    --     },
-    --     event = "VeryLazy",
-    --     config = function()
-    --         local nn = require "notebook-navigator"
-    --         nn.setup({ activate_hydra_keys = "<leader>j" })
-    --     end,
-    -- },
     {
-        "GCBallesteros/jupytext.nvim",
+        "GCBallesteros/NotebookNavigator.nvim",
+        keys = {
+            { "]h",        function() require("notebook-navigator").move_cell "d" end },
+            { "[h",        function() require("notebook-navigator").move_cell "u" end },
+            { "<leader>e", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
+            { "<leader>E", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
+        },
+        dependencies = {
+            "echasnovski/mini.comment",
+            "benlubas/molten-nvim",
+            "anuvyklack/hydra.nvim",
+        },
         event = "VeryLazy",
         config = function()
-            require('jupytext').setup()
+            require("notebook-navigator").setup(
+            --     {
+            --     activate_hydra_keys = "<leader>j"
+            -- }
+            )
+        end,
+    },
+    {
+        "GCBallesteros/jupytext.nvim",
+        config = function()
+            require('jupytext').setup({})
         end
     },
     {
@@ -82,7 +84,6 @@ return {
     },
     {
         "echasnovski/mini.hipatterns",
-        event = "VeryLazy",
         dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
         opts = function()
             local nn = require "notebook-navigator"
@@ -135,4 +136,3 @@ return {
         },
     },
 }
--- %%
