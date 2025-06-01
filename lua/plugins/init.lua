@@ -30,6 +30,10 @@ return {
                 dim_inactive = true,              -- dims inactive windows
                 lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
             })
+            -- Changing line number color
+            vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#cac911' })
+            vim.api.nvim_set_hl(0, 'LineNr', { fg = '#01cac9' })
+            vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#cac911' })
         end
     },
 
@@ -84,7 +88,11 @@ return {
         'Exafunction/codeium.vim',
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp"
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
         },
         config = function()
             vim.keymap.set('i', '<c-c>', function() return vim.fn["codeium#Complete"]() end, { expr = true })
@@ -213,6 +221,18 @@ return {
         end
     },
     {
-        "shortcuts/no-neck-pain.nvim"
+        "shortcuts/no-neck-pain.nvim",
+        event = "VeryLazy",
+        keys = {
+            { "<leader>nnp", "<cmd>NoNeckPain<cr>", desc = "No Neck Pain", },
+        },
+        config = function ()
+            require("no-neck-pain").setup({
+                width = 120, -- Width of the window when No Neck Pain is enabled
+                disable_on_zoom = true, -- Disable No Neck Pain when zooming in
+                disable_on_insert = false, -- Disable No Neck Pain when entering insert mode
+            })
+        end
+
     },
 }

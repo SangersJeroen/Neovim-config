@@ -39,7 +39,8 @@ vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
 if vim.g.neovide then
-    vim.o.guifont = "CaskaydiaCove NFM"
+    -- vim.o.guifont = "CaskaydiaCove NFM"
+    vim.o.guifont = "JetBrainsMono Nerd Font Mono:h14"
     vim.opt.linespace = 4
     vim.g.neovide_padding_top = 0
     vim.g.neovide_padding_bottom = 0
@@ -63,3 +64,4 @@ end
 -- Options for undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+

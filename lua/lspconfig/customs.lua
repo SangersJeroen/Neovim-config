@@ -45,12 +45,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 -- PYTHON
-local on_attach_ruff = function(client, bufnr)
-    if client.name == 'ruff' then
-        -- Disable hover in favor of Pyright
-        client.server_capabilities.hoverProvider = false
-    end
-end
 
 local venv_path = os.getenv('VIRTUAL_ENV')
 local py_path = nil
@@ -61,42 +55,10 @@ else
     py_path = vim.g.python3_host_prog
 end
 
-require('lspconfig').ruff.setup {
-    on_attach = on_attach_ruff,
-}
 
--- lspconfig.pylyzer.setup({
---     capabilities = lsp_capabilities,
---     on_attach = on_attach,
--- })
---
---
-lspconfig.pylsp.setup {
-    settings = {
-        pylsp = {
-            plugins = {
-                -- formatter options
-                black = { enabled = true },
-                -- type checker
-                pylsp_mypy = { enabled = true,
-                    overrides = { "--python-executable", py_path, true },
-                    report_progress = true,
-                    live_mode = true },
-                -- auto-completion options
-                pyls_isort = { enabled = true },
-                -- linter
-                ruff = {
-                    enabled = true,
-                    lineLength = 120,
-                },
-            },
-        },
-    },
-    flags = {
-        debounce_text_changes = 200,
-    },
-    capabilities = lsp_capabilities,
-}
+vim.lsp.enable('basedpyright')
+vim.lsp.enable('ruff')
+
 
 
 -- LaTeX LANGUAGE SERVERS CONFIGURATION
