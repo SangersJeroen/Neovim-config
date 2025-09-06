@@ -37,3 +37,14 @@ vim.keymap.set('n', '<M-s>', '<cmd>split<CR>')
 vim.keymap.set('i', 'jk', '<Esc>')
 
 vim.keymap.set('v', '<leader>sa', ":s/:[^,]*[, \\|*^)]/=,\\r/g")
+
+-- Declare a function to toggle diagnostics
+function ToggleDiagnostics()
+  if vim.diagnostic.is_enabled() then
+    vim.diagnostic.disable()
+  else
+    vim.diagnostic.enable()
+  end
+end
+
+vim.keymap.set("n", "<leader>tt", "<cmd>lua ToggleDiagnostics()<CR>", { noremap = true, silent = true })

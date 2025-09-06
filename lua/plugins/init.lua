@@ -36,7 +36,6 @@ return {
             vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#cac911' })
         end
     },
-
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -226,13 +225,20 @@ return {
         keys = {
             { "<leader>nnp", "<cmd>NoNeckPain<cr>", desc = "No Neck Pain", },
         },
-        config = function ()
+        config = function()
             require("no-neck-pain").setup({
-                width = 120, -- Width of the window when No Neck Pain is enabled
-                disable_on_zoom = true, -- Disable No Neck Pain when zooming in
+                width = 120,               -- Width of the window when No Neck Pain is enabled
+                disable_on_zoom = true,    -- Disable No Neck Pain when zooming in
                 disable_on_insert = false, -- Disable No Neck Pain when entering insert mode
             })
         end
 
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "InsertEnter",
+        config = function ()
+            require("lsp_signature").setup()
+        end
     },
 }

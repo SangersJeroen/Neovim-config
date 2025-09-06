@@ -5,8 +5,8 @@ local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.diagnostic.config({
-    virtual_lines = {
-        current_line = true,
+    virtual_text = {
+        current_line = false,
     },
 })
 
