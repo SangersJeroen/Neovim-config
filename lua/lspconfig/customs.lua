@@ -1,7 +1,6 @@
 -- PYTHON LANGUAGE SERVERS CONFIGURATION ________________________________________________________
 local lsp_zero = require('lsp-zero')
 lsp_zero.extend_lspconfig()
-local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.diagnostic.config({
@@ -12,7 +11,7 @@ vim.diagnostic.config({
 
 vim.lsp.config('*', {
     capabilities = lsp_capabilities,
-    root_markers = {'.git'},
+    root_markers = { '.git' },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -62,7 +61,7 @@ vim.lsp.enable('ruff')
 
 
 -- LaTeX LANGUAGE SERVERS CONFIGURATION
-require("lspconfig").ltex.setup {
+vim.lsp.config("ltex", {
     capabilities = lsp_capabilities,
     on_attach = function(client, bufnr)
         require("ltex_extra").setup {
@@ -78,9 +77,9 @@ require("lspconfig").ltex.setup {
             language = "en-GB"
         }
     }
-}
+})
 
-require('lspconfig').texlab.setup {
+vim.lsp.config("texlab", {
     capabilities = lsp_capabilities,
     on_attach = on_attach,
     setting = {
@@ -98,9 +97,9 @@ require('lspconfig').texlab.setup {
             },
         },
     },
-}
+})
 
-require('lspconfig').harper_ls.setup {
+vim.lsp.config("harper_ls", {
     settings = {
         ["harper-ls"] = {
             userDictPath = "~/.config/nvim/spell/",
@@ -128,15 +127,15 @@ require('lspconfig').harper_ls.setup {
             isolateEnglish = false
         }
     }
-}
+})
 
 --- C/C++ LANGUAGE SERVER CONFIGURATION
-require("lspconfig").clangd.setup {
+vim.lsp.config('clangd', {
     on_attach = function(client, bufnr)
         client.server_capabilities.signatureHelpProvider = false
     end,
     capabilities = lsp_capabilities,
-}
+})
 
 --- Rust configuration
 -- lspconfig.rust_analyzer.setup({
@@ -159,6 +158,6 @@ require("lspconfig").clangd.setup {
 
 
 --- XML configuration
-require('lspconfig').lemminx.setup {
+vim.lsp.config("lemminx", {
     capabilities = lsp_capabilities,
-}
+})
