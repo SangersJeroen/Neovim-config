@@ -55,9 +55,19 @@ else
 end
 
 
-vim.lsp.enable('basedpyright')
+-- vim.lsp.enable('basedpyright')
+vim.lsp.enable('zuban')
 vim.lsp.enable('ruff')
 
+vim.lsp.config("zls",
+    {
+        capabilities = lsp_capabilities,
+        on_attach = on_attach,
+        cmd = { "zls" },
+        filetypes = { "zig", "zir" },
+        single_file_support = true,
+    }
+)
 
 
 -- LaTeX LANGUAGE SERVERS CONFIGURATION

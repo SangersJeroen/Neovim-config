@@ -94,7 +94,7 @@ return {
             "hrsh7th/cmp-cmdline",
         },
         config = function()
-            vim.keymap.set('i', '<c-c>', function() return vim.fn["codeium#Complete"]() end, { expr = true })
+            vim.keymap.set('i', '<C-c>', function() return vim.fn["codeium#Complete"]() end, { expr = true })
             vim.keymap.set('i', '<M-a>', function() return vim.fn['codeium#Accept']() end, { expr = true })
             vim.keymap.set('i', '<M-j>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
             vim.keymap.set('i', '<M-k>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
@@ -237,8 +237,21 @@ return {
     {
         "ray-x/lsp_signature.nvim",
         event = "InsertEnter",
-        config = function ()
+        config = function()
             require("lsp_signature").setup()
         end
     },
+    -- {
+    --     "knubie/vim-kitty-navigator",
+    --     build = "cp ./*.py ~/.config/kitty/",
+    --     config = function ()
+    --         vim.g.kitty_navigator_no_mappings = 1
+    --         if vim.env.TERM == 'xterm-256color' then
+    --             vim.keymap.set("n", "<C-h>", '<cmd>KittyNavigateLeft<CR>')
+    --             vim.keymap.set("n", "<C-j>", '<cmd>KittyNavigateDown<CR>')
+    --             vim.keymap.set("n", "<C-k>", '<cmd>KittyNavigateUp<CR>')
+    --             vim.keymap.set("n", "<C-l>", '<cmd>KittyNavigateRight<CR>')
+    --         end
+    --     end
+    -- },
 }
