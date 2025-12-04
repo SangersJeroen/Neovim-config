@@ -24,17 +24,12 @@ return {
             'williamboman/mason.nvim',
         },
         config = function()
-            local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig()
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'clangd',
                     'lua_ls',
                     'ltex',
                 },
-                handlers = {
-                    lsp_zero.default_setup,
-                }
             })
             require "lspconfig.customs"
         end,
