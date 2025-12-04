@@ -1,5 +1,5 @@
 -- PYTHON LANGUAGE SERVERS CONFIGURATION ________________________________________________________
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 
 vim.diagnostic.config({
     virtual_text = {
@@ -8,7 +8,6 @@ vim.diagnostic.config({
 })
 
 vim.lsp.config('*', {
-    capabilities = lsp_capabilities,
     root_markers = { '.git' },
 })
 
@@ -59,7 +58,6 @@ vim.lsp.enable('ruff')
 
 vim.lsp.config("zls",
     {
-        capabilities = lsp_capabilities,
         on_attach = on_attach,
         cmd = { "zls" },
         filetypes = { "zig", "zir" },
@@ -70,7 +68,6 @@ vim.lsp.config("zls",
 
 -- LaTeX LANGUAGE SERVERS CONFIGURATION
 vim.lsp.config("ltex", {
-    capabilities = lsp_capabilities,
     on_attach = function(client, bufnr)
         require("ltex_extra").setup {
             load_langs = { "en-GB", "en-US", "nl-NL" },
@@ -88,7 +85,6 @@ vim.lsp.config("ltex", {
 })
 
 vim.lsp.config("texlab", {
-    capabilities = lsp_capabilities,
     on_attach = on_attach,
     setting = {
         texlab = {
@@ -142,7 +138,6 @@ vim.lsp.config('clangd', {
     on_attach = function(client, bufnr)
         client.server_capabilities.signatureHelpProvider = false
     end,
-    capabilities = lsp_capabilities,
 })
 
 --- Rust configuration
@@ -167,5 +162,4 @@ vim.lsp.config('clangd', {
 
 --- XML configuration
 vim.lsp.config("lemminx", {
-    capabilities = lsp_capabilities,
 })
