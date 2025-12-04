@@ -4,14 +4,14 @@ return {
         event = 'VeryLazy',
         config = function()
             local dap = require("dap")
-            
+
             dap.adapters.python = {
                 type = "executable",
                 command = "python3",
-                args = {"-m", "debugpy.adapter"},
+                args = { "-m", "debugpy.adapter" },
             }
 
-            local get_args = function ()
+            local get_args = function()
                 local cmd_args = vim.fn.input('CMD Args: ')
                 local params = {}
                 local sep = "%s"
@@ -29,9 +29,9 @@ return {
                     name = 'debug file notMyCode',
                     program = '${file}',
                     args = get_args,
-                    pythonPath = function ()
+                    pythonPath = function()
                         local venv_path = os.getenv("VIRTUAL_ENV")
-                        if venv_path  then 
+                        if venv_path then
                             return venv_path .. "/bin/python"
                         end
                         return "/usr/bin/python3"
@@ -57,24 +57,15 @@ return {
         'rcarriga/nvim-dap-ui',
         dependecies = {
             'mfussenegger/nvim-dap',
-            'folke/neodev.nvim',
             'nvim-neotest/nvim-nio',
         },
-        config = function ()
+        config = function()
             require('dapui').setup()
-            vim.keymap.set('n', '<leader>do', require('dapui').open, {desc = "DAPui Open"})
-            vim.keymap.set('n', '<leader>dx', require('dapui').close, {desc = "DAPui Close"})
+            vim.keymap.set('n', '<leader>do', require('dapui').open, { desc = "DAPui Open" })
+            vim.keymap.set('n', '<leader>dx', require('dapui').close, { desc = "DAPui Close" })
         end,
     },
     'theHamsta/nvim-dap-virtual-text',
-    {
-        'folke/neodev.nvim',
-        config = function()
-            require("neodev").setup({
-                library = { plugins = { "nvim-dap-ui" }, types = true },
-            })
-        end,
-    },
     {
         'jay-babu/mason-nvim-dap.nvim',
         event = 'VeryLazy',
