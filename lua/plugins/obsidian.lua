@@ -138,7 +138,7 @@ return {
                 -- telescope.nvim, fzf-lua, or fzf.vim (in that order), and use the
                 -- first one they find. You can set this option to tell obsidian.nvim to always use this
                 -- finder.
-                finder = "telescope.nvim",
+                finder = "fzf-lua",
 
                 -- Optional, sort search results by "path", "modified", "accessed", or "created".
                 -- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
