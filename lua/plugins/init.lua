@@ -85,14 +85,6 @@ return {
 
     {
         'Exafunction/codeium.vim',
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-        },
         config = function()
             vim.keymap.set('i', '<C-c>', function() return vim.fn["codeium#Complete"]() end, { expr = true })
             vim.keymap.set('i', '<M-a>', function() return vim.fn['codeium#Accept']() end, { expr = true })
