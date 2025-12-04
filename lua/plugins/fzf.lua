@@ -7,11 +7,21 @@ return { {
     ---@diagnostics disable: missing-fields
     opts = {},
     ---@diagnostics enable: missing-fields
-    config = {
-        {
-            winopts = { preview = { default = "bat" } }
-        }
-    },
+    config = function()
+        actions = require('fzf-lua').actions
+        require('fzf-lua').setup({
+            winopts = { preview = { default = "bat" } },
+            keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },
+            actions = {
+                files = {
+                    ["ctrl-s"] = actions.file_split,
+                    ["ctrl-v"] = actions.file_vsplit,
+                    ["ctrl-t"] = actions.file_tabedit,
+                    ["alt-q"]  = actions.file_sel_to_qf,
+                }
+            }
+        })
+    end,
     keys = {
         -- Finding Files
         {

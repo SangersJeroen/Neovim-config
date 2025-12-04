@@ -6,7 +6,7 @@ return {
         ---@module "auto-session"
         ---@type AutoSession.Config
         opts = {
-            auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+            auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
             auto_restore_enabled = true,
             session_lens = {
                 -- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
@@ -25,8 +25,8 @@ return {
         },
         keys = {
             -- Will use Telescope if installed or a vim.ui.select picker otherwise
-            { '<leader>s',  '<cmd>SessionSearch<CR>', desc = 'Session search' },
-            { '<leader>ws', '<cmd>SessionSave<CR>',   desc = 'Save session' },
+            { '<leader>s',  '<cmd>AutoSession search<CR>', desc = 'Session search' },
+            { '<leader>ws', '<cmd>AutoSession save<CR>',   desc = 'Save session' },
         },
     },
 }
