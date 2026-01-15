@@ -68,3 +68,4 @@ Nanoprobe
 nanoprobe
 fluscreen
 wavefunctions
+colorpallette

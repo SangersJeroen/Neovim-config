@@ -14,6 +14,7 @@ return { {
             keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },
             actions = {
                 files = {
+                    ["enter"] = actions.file_edit_or_qf,
                     ["ctrl-s"] = actions.file_split,
                     ["ctrl-v"] = actions.file_vsplit,
                     ["ctrl-t"] = actions.file_tabedit,

@@ -1,21 +1,38 @@
--- PYTHON LANGUAGE SERVERS CONFIGURATION ________________________________________________________
+-- LANGUAGE SERVERS CONFIGURATION ________________________________________________________
 
+local capabilities = {
+    textDocument = {
+        foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true
+        }
+    }
+}
+capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
+local on_attach = function(client, bufnr)
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable()
+    end
+end
 
 vim.diagnostic.config({
+    capabilities = capabilities,
     virtual_text = {
-        current_line = false,
+        current_line = true,
     },
 })
 
 vim.lsp.config('*', {
     root_markers = { '.git' },
+    capabilities = capabilities,
+    on_attach = on_attach
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP Actions',
     callback = function(event)
         local bufopts = { buffer = event.buf }
-        vim.keymap.set("i", "xgs", function() vim.lsp.buf.signature_help() end, bufopts)
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
 
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
@@ -39,8 +56,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
-
--- PYTHON
+-- PYTHON LANGUAGE SERVERS CONFIGURATION ________________________________________________________
 
 local venv_path = os.getenv('VIRTUAL_ENV')
 local py_path = nil
@@ -52,10 +68,12 @@ else
 end
 
 
--- vim.lsp.enable('basedpyright')
-vim.lsp.enable('zuban')
+vim.lsp.enable('basedpyright')
+-- vim.lsp.enable('zuban')
 vim.lsp.enable('ruff')
 
+
+-- ZIG LANGUAGE SERVERS CONFIGURATION ___________________________________________________________
 vim.lsp.config("zls",
     {
         on_attach = on_attach,
