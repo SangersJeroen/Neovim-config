@@ -21,4 +21,80 @@ return {
             vim.keymap.set('n', '<leader>td', gs.toggle_deleted, { desc = 'show deleted' })
         end
     },
+    {
+        "jiaoshijie/undotree",
+        ---@module 'undotree.collector'
+        ---@type UndoTreeCollector.Opts
+        config = function()
+            local ut = require('undotree')
+            ut.setup({
+                float_diff = true,
+                position = 'left',
+                ignore_filetype = {
+                    'undotree',
+                    'undotreeDiff',
+                    'qf',
+                },
+                window = {
+                    winblend = 0,
+                    border = 'rounded',
+                },
+            })
+        end,
+        keys = { -- load the plugin only when using it's keybinding:
+            { "<leader>U", "<cmd>lua require('undotree').toggle()<cr>" },
+        },
+    },
+    {
+        'isakbm/gitgraph.nvim',
+        opts = {
+            git_cmd = "git",
+            symbols = {
+                merge_commit = 'M',
+                commit = '*',
+            },
+            format = {
+                timestamp = '%H:%M:%S %d-%m-%Y',
+                fields = { 'hash', 'timestamp', 'author', 'branch_name', 'tag' },
+            },
+            hooks = {
+                on_select_commit = function(commit)
+                    print('selected commit:', commit.hash)
+                end,
+                on_select_range_commit = function(from, to)
+                    print('selected range:', from.hash, to.hash)
+                end,
+                -- Check diff of a commit
+                on_select_commit = function(commit)
+                    vim.cmd(':DiffviewOpen ' .. commit.hash .. '^!')
+                end,
+                -- Check diff from commit a -> commit b
+                on_select_range_commit = function(from, to)
+                    vim.cmd(':DiffviewOpen ' .. from.hash .. '~1..' .. to.hash)
+                end,
+            },
+        },
+        keys = {
+            {
+                "<leader>gl",
+                function()
+                    require('gitgraph').draw({}, { all = true, max_count = 5000 })
+                end,
+                desc = "GitGraph - Draw",
+            },
+        },
+    },
+    {
+        "NeogitOrg/neogit",
+        lazy = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+            "ibhagwan/fzf-lua",
+        },
+        cmd = "Neogit",
+        keys = {
+            { "<leader>ng", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+        }
+    }
 }
