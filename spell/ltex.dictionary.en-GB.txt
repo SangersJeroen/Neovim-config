@@ -69,3 +69,6 @@ nanoprobe
 fluscreen
 wavefunctions
 colorpallette
+MEEP
+PhCs
+vdW

@@ -28,14 +28,14 @@ return {
             require 'hop'.setup {
                 keys = 'asdfghjkl;qweruiopvncm',
                 -- keys = 'etovxqpdygfblzhckisuran',
-                quit_key = ' <SPC>',
+                quit_key = ' <ESC>',
                 multi_windows = true,
             }
 
             vim.keymap.set('n', '<M-f>', function() hop.hint_words() end)
             vim.cmd('hi HopNextKey guifg=#cac911')
-            vim.cmd('hi HopNextKey1 guifg=#01cac9')
-            vim.cmd('hi HopNextKey2 guifg=#ff06b5')
+            vim.cmd('hi HopNextKey1 guifg=#ff06b5')
+            vim.cmd('hi HopNextKey2 guifg=#01cac9')
         end,
     },
     {

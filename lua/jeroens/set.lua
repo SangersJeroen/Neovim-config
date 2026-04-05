@@ -55,10 +55,10 @@ if vim.g.neovide then
     end
     vim.keymap.set("n", "<C-+>", function()
         change_scale_factor(1.25)
-    end)
+    end, {desc='Increase font size'})
     vim.keymap.set("n", "<C-->", function()
         change_scale_factor(1 / 1.25)
-    end)
+    end, {desc='Decrease font size'})
 end
 
 -- Options for undercurl

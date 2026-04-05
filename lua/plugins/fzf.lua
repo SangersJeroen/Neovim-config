@@ -14,7 +14,7 @@ return { {
             keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },
             actions = {
                 files = {
-                    ["enter"] = actions.file_edit_or_qf,
+                    ["enter"]  = actions.file_edit_or_qf,
                     ["ctrl-s"] = actions.file_split,
                     ["ctrl-v"] = actions.file_vsplit,
                     ["ctrl-t"] = actions.file_tabedit,
@@ -31,7 +31,7 @@ return { {
             desc = "Find Files"
         },
         {
-            '<C-p>ff',
+            '<leader>gf',
             function()
                 require('fzf-lua').git_files()
             end,
@@ -91,6 +91,11 @@ return { {
             '<leader>fdv',
             function() require('fzf-lua').dap_variables() end,
             desc = "Find DAP Var."
+        },
+        {
+            '<C-p>',
+            function () require('fzf-lua').keymaps() end,
+            desc = 'Command Palette'
         },
     }
 } }

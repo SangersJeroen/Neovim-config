@@ -14,9 +14,9 @@ return {
                 previewer = true,
                 mappings = {
                     -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode
-                    delete_session = { "i", "<C-D>" },
-                    alternate_session = { "i", "<C-S>" },
-                    copy_session = { "i", "<C-Y>" },
+                    delete_session = { "i", "<C-d>" },
+                    alternate_session = { "i", "<C-s>" },
+                    copy_session = { "i", "<C-y>" },
                 },
                 theme_conf = {
                     border = true,
@@ -24,7 +24,6 @@ return {
             },
         },
         keys = {
-            -- Will use Telescope if installed or a vim.ui.select picker otherwise
             { '<leader>s',  '<cmd>AutoSession search<CR>', desc = 'Session search' },
             { '<leader>ws', '<cmd>AutoSession save<CR>',   desc = 'Save session' },
         },

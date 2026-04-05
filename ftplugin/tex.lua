@@ -12,8 +12,8 @@ vim.opt_local.autoindent = true
 vim.opt_local.tabstop = 2
 vim.opt_local.softtabstop = 2
 vim.fn.setreg("a", "i/\textbf{}")
-vim.keymap.set('n', '<localleader>ll', '<cmd>VimtexCompile<cr>')
-vim.keymap.set('n', '<localleader>lv', '<cmd>VimtexView<cr>')
+vim.keymap.set('n', '<localleader>ll', '<cmd>VimtexCompile<cr>', {desc='Compile LaTeX Document'})
+vim.keymap.set('n', '<localleader>lv', '<cmd>VimtexView<cr>', {desc='View PDF'})
 
 vim.g.vimtex_quickfix_ignore_filters = {
     'LaTeX hooks Warning',
