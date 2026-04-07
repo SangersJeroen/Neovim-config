@@ -11,6 +11,7 @@ return {
         config = function()
             require("obsidian").setup({
                 notes_subdir = "modica",
+                ui = {enable = false},
                 workspaces = {
                     {
                         name = "Shard",
