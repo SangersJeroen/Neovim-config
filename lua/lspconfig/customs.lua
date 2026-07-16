@@ -68,9 +68,11 @@ else
 end
 
 
-vim.lsp.enable('basedpyright')
+-- vim.lsp.enable('basedpyright')
 -- vim.lsp.enable('zuban')
-vim.lsp.enable('ruff')
+-- vim.lsp.enable('ruff')
+-- vim.lsp.enable('mypy')
+vim.lsp.enable('ty')
 
 
 -- ZIG LANGUAGE SERVERS CONFIGURATION ___________________________________________________________

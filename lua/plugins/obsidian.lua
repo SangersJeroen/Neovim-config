@@ -3,15 +3,13 @@ return {
         "obsidian-nvim/obsidian.nvim",
         version = "*",
         ft = "markdown",
+        lazy=false,
         ---@module 'obsidian'
-        ---@type obsidian.config
-        opts = {
-            legacy_commands = false,
-        },
         config = function()
             require("obsidian").setup({
                 notes_subdir = "modica",
                 ui = {enable = false},
+                legacy_commands = false,
                 workspaces = {
                     {
                         name = "Shard",
@@ -46,12 +44,12 @@ return {
             ]],
                 body = "<Space>o",
                 heads = {
-                    { "t",     cmd "ObsidianToday",     { desc = "Today's Note", nowait = true, exit_before = true } },
-                    { "y",     cmd "ObsidianYesterday", { desc = "Yesterday's Note", nowait = true, exit_before = true } },
-                    { "T",     cmd "ObsidianTomorrow",  { desc = "Tomorrow's Note", nowait = true, exit_before = true } },
-                    { "n",     cmd "ObsidianNew",       { desc = "New Note", nowait = true, exit_before = true } },
-                    { "s",     cmd "ObsidianSearch",    { desc = "Search Notes", nowait = true, exit_before = true } },
-                    { "f",     cmd "ObsidianTemplate",  { desc = "Insert Template", nowait = true, exit_before = true } },
+                    { "t",     cmd "Obsidian today",     { desc = "Today's Note", nowait = true, exit_before = true } },
+                    { "y",     cmd "Obsidian yesterday", { desc = "Yesterday's Note", nowait = true, exit_before = true } },
+                    { "T",     cmd "Obsidian tomorrow",  { desc = "Tomorrow's Note", nowait = true, exit_before = true } },
+                    { "n",     cmd "Obsidian new",       { desc = "New Note", nowait = true, exit_before = true } },
+                    { "s",     cmd "Obsidian search",    { desc = "Search Notes", nowait = true, exit_before = true } },
+                    { "f",     cmd "Obsidian template",  { desc = "Insert Template", nowait = true, exit_before = true } },
                     { "q",     nil,                     { desc = "quit", exit = true, nowait = true, exit_before = true } },
                     { "<Esc>", nil,                     { desc = "quit", exit = true, nowait = true, exit_before = true } },
                 }
