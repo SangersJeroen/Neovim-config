@@ -1,21 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                'ruff',
-                'python-lsp-server',
-                'clangd',
-                'clang-format',
-                'codelldb',
-                'lua_ls',
-                'ltex',
-                'rust-analyzer',
-            }
-        },
-        config = function()
-            require('mason').setup()
-        end,
+        opts = {},
     },
     {
         'williamboman/mason-lspconfig.nvim',
@@ -30,8 +16,12 @@ return {
                     'lua_ls',
                     'ltex',
                 },
+                -- Servers configured in lspconfig/customs.lua but deliberately not enabled.
+                -- rust_analyzer is managed by rustaceanvim.
+                automatic_enable = {
+                    exclude = { 'zls', 'texlab', 'harper_ls', 'lemminx', 'rust_analyzer' },
+                },
             })
-            require "lspconfig.customs"
         end,
     },
     {

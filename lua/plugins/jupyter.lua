@@ -28,7 +28,7 @@ return {
         keys = {
             { "<leader>mi", "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
             { "<leader>mf", "<cmd>MoltenImagePopup<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
-            { "<leader>mc", "<cmd>MoltenEvalutateCell<cr>",          mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
+            { "<leader>mc", "<cmd>MoltenEvaluateCell<cr>",          mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
             { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>",         mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
             { "<leader>mh", "<cmd>MoltenHideOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
             { "<leader>ms", "<cmd>MoltenShowOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
@@ -52,7 +52,7 @@ return {
             { "<leader>E", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
         },
         dependencies = {
-            "echasnovski/mini.comment",
+            "nvim-mini/mini.nvim",
             "benlubas/molten-nvim",
             "anuvyklack/hydra.nvim",
         },
@@ -72,49 +72,12 @@ return {
         end
     },
     {
-        "echasnovski/mini.ai",
-        event = "VeryLazy",
-        dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
-        opts = function()
-            local nn = require "notebook-navigator"
-
-            local opts = { custom_textobjects = { h = nn.miniai_spec } }
-            return opts
-        end,
-    },
-    {
-        "echasnovski/mini.hipatterns",
-        dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
-        opts = function()
-            local nn = require "notebook-navigator"
-
-            local opts = { highlighters = { cells = nn.minihipatterns_spec } }
-            return opts
-        end,
-        config = function()
-            local hipatterns = require('mini.hipatterns')
-            hipatterns.setup({
-                highlighters = {
-                    -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-                    fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-                    hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-                    todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-                    note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-
-                    -- Highlight hex color strings (`#rrggbb`) using that color
-                    hex_color = hipatterns.gen_highlighter.hex_color(),
-                }
-            })
-        end,
-    },
-    {
         "linux-cultist/venv-selector.nvim",
         dependencies = {
             "neovim/nvim-lspconfig",
             "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
         },
-        lazy = 'VeryLazy',
-        branch = "regexp", -- This is the regexp branch, use this for the new version
+        event = 'VeryLazy',
         config = function()
             require("venv-selector").setup {
                 settings = {

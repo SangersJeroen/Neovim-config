@@ -5,16 +5,11 @@ return {
         config = function()
             local dap = require("dap")
 
-            dap.adapters.python = {
-                type = "executable",
-                command = "python3",
-                args = { "-m", "debugpy.adapter" },
-            }
+            -- The python adapter itself is registered by nvim-dap-python below.
 
             local get_args = function()
                 local cmd_args = vim.fn.input('CMD Args: ')
                 local params = {}
-                local sep = "%s"
                 for param in string.gmatch(cmd_args, "[^%s]+") do
                     table.insert(params, param)
                 end
@@ -42,20 +37,19 @@ return {
             vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
             vim.keymap.set('n', '<leader>dc', dap.continue, { desc = "DAP Continue" })
         end,
-        dependecies = {
-            "rcarriga/nvim-dap-ui",
-        },
     },
 
     {
         'mfussenegger/nvim-dap-python',
+        dependencies = { 'mfussenegger/nvim-dap' },
         config = function()
-            require('dap-python').setup('python')
+            -- include_configs = false keeps only the custom configuration from the nvim-dap spec
+            require('dap-python').setup('python3', { include_configs = false })
         end,
     },
     {
         'rcarriga/nvim-dap-ui',
-        dependecies = {
+        dependencies = {
             'mfussenegger/nvim-dap',
             'nvim-neotest/nvim-nio',
         },
@@ -65,11 +59,17 @@ return {
             vim.keymap.set('n', '<leader>dx', require('dapui').close, { desc = "DAPui Close" })
         end,
     },
-    'theHamsta/nvim-dap-virtual-text',
+    {
+        'theHamsta/nvim-dap-virtual-text',
+        dependencies = { 'mfussenegger/nvim-dap' },
+        config = function()
+            require('nvim-dap-virtual-text').setup()
+        end,
+    },
     {
         'jay-babu/mason-nvim-dap.nvim',
         event = 'VeryLazy',
-        dependecies = {
+        dependencies = {
             'williamboman/mason.nvim',
             'mfussenegger/nvim-dap',
         },
@@ -80,5 +80,4 @@ return {
             },
         },
     },
-    'nvim-neotest/nvim-nio',
 }

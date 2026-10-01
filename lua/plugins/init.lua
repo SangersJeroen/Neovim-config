@@ -42,7 +42,6 @@ return {
     'barreiroleo/ltex-extra.nvim',
 
     "anuvyklack/hydra.nvim",
-    "folke/which-key.nvim",
     {
         'andymass/vim-matchup',
         config = function()

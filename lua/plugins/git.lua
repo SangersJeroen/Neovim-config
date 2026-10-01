@@ -58,12 +58,6 @@ return {
                 fields = { 'hash', 'timestamp', 'author', 'branch_name', 'tag' },
             },
             hooks = {
-                on_select_commit = function(commit)
-                    print('selected commit:', commit.hash)
-                end,
-                on_select_range_commit = function(from, to)
-                    print('selected range:', from.hash, to.hash)
-                end,
                 -- Check diff of a commit
                 on_select_commit = function(commit)
                     require('diffview')

@@ -1,8 +1,2 @@
-return {
-  {
-    "nvim-mini/mini.statusline",
-    config = function ()
-      require('mini.statusline').setup({})
-    end
-  },
-}
+-- mini.statusline is set up in mini.lua together with the other mini.* modules.
+return {}

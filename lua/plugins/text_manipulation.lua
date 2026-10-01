@@ -1,25 +1,20 @@
 return {
     {
         "sustech-data/wildfire.nvim",
-        config = function()
-            opts = {
-                {
-                    surrounds = {
-                        { "(", ")" },
-                        { "{", "}" },
-                        { "<", ">" },
-                        { "[", "]" },
-                    },
-                    keymaps = {
-                        init_selection = "<CR>",
-                        node_incremental = "<CR>",
-                        node_decremental = "<BS>",
-                    },
-                    filetype_exclude = { "qf" }, --keymaps will be unset in excluding filetypes
-                }
-            }
-            require("wildfire").setup(opts)
-        end,
+        opts = {
+            surrounds = {
+                { "(", ")" },
+                { "{", "}" },
+                { "<", ">" },
+                { "[", "]" },
+            },
+            keymaps = {
+                init_selection = "<CR>",
+                node_incremental = "<CR>",
+                node_decremental = "<BS>",
+            },
+            filetype_exclude = { "qf" }, --keymaps will be unset in excluding filetypes
+        },
     },
     {
         "kylechui/nvim-surround",

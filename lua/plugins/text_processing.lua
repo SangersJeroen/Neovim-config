@@ -4,8 +4,8 @@ return {
         config = function()
             -- Lua
             require('substitute').setup()
-            subs = require('substitute')
-            ssex = require('substitute.exchange')
+            local subs = require('substitute')
+            local ssex = require('substitute.exchange')
             vim.keymap.set("n", "s", subs.operator, { noremap = true })
             vim.keymap.set("n", "ss", subs.line, { noremap = true })
             vim.keymap.set("n", "S", subs.eol, { noremap = true })

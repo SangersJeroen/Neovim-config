@@ -1,14 +1,14 @@
 return { {
     "ibhagwan/fzf-lua",
     -- optional for icon support
-    dependencies = { "nvim-mini/mini.icons" },
+    dependencies = { "nvim-mini/mini.nvim" },
     ---@module "fzf-lua"
     ---@type fzf-lua.Config|{}
     ---@diagnostics disable: missing-fields
     opts = {},
     ---@diagnostics enable: missing-fields
     config = function()
-        actions = require('fzf-lua').actions
+        local actions = require('fzf-lua').actions
         require('fzf-lua').setup({
             winopts = { preview = { default = "bat" } },
             keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },

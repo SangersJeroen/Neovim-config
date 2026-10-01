@@ -1,6 +1,7 @@
 return {
     {
         'theprimeagen/harpoon',
+        branch='harpoon2',
         config = function()
             local mark = require('harpoon.mark')
             local ui = require('harpoon.ui')
@@ -19,8 +20,7 @@ return {
         end,
     },
     {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
+        'smoka7/hop.nvim',
         config = function()
             local hop = require('hop')
             local directions = require('hop.hint').HintDirection
@@ -48,3 +48,5 @@ return {
         end,
     },
 }
+-- %%
+

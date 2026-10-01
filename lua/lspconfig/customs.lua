@@ -10,28 +10,27 @@ local capabilities = {
 }
 capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
-local on_attach = function(client, bufnr)
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable()
-    end
-end
-
 vim.diagnostic.config({
-    capabilities = capabilities,
     virtual_text = {
         current_line = true,
     },
 })
 
+-- No `on_attach` here: a per-server on_attach would replace it, so shared
+-- per-client setup lives in the LspAttach autocmd below instead.
 vim.lsp.config('*', {
     root_markers = { '.git' },
     capabilities = capabilities,
-    on_attach = on_attach
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP Actions',
     callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+        end
+
         local bufopts = { buffer = event.buf }
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
 
@@ -78,7 +77,6 @@ vim.lsp.enable('ty')
 -- ZIG LANGUAGE SERVERS CONFIGURATION ___________________________________________________________
 vim.lsp.config("zls",
     {
-        on_attach = on_attach,
         cmd = { "zls" },
         filetypes = { "zig", "zir" },
         single_file_support = true,
@@ -105,8 +103,7 @@ vim.lsp.config("ltex", {
 })
 
 vim.lsp.config("texlab", {
-    on_attach = on_attach,
-    setting = {
+    settings = {
         texlab = {
             forwardSearch = {
                 executable = '/home/jeroensangers/.local/bin/sioyek/sioyek',
