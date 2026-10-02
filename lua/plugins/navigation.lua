@@ -1,7 +1,7 @@
 return {
     {
-        'theprimeagen/harpoon',
-        branch='harpoon2',
+        'ThePrimeagen/harpoon',
+        branch = 'harpoon2',
         config = function()
             local mark = require('harpoon.mark')
             local ui = require('harpoon.ui')
@@ -39,14 +39,18 @@ return {
         end,
     },
     {
-        "christoomey/vim-tmux-navigator",
+        'mrjones2014/smart-splits.nvim',
+        build = './kitty/install-kittens.bash',
         config = function()
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-h>', "<cmd> TmuxNavigateLeft<CR>")
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-l>', "<cmd> TmuxNavigateRight<CR>")
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-j>', "<cmd> TmuxNavigateDown<CR>")
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-k>', "<cmd> TmuxNavigateUp<CR>")
-        end,
-    },
+            local ss = require('smart-splits')
+            vim.keymap.set('n', '<A-h>', ss.resize_left)
+            vim.keymap.set('n', '<A-j>', ss.resize_down)
+            vim.keymap.set('n', '<A-k>', ss.resize_up)
+            vim.keymap.set('n', '<A-l>', ss.resize_right)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-h>', ss.move_cursor_left)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-l>', ss.move_cursor_right)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-j>', ss.move_cursor_down)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-k>', ss.move_cursor_up)
+        end
+    }
 }
--- %%
-

@@ -5,10 +5,12 @@ return {
         enabled = function() return not vim.g.neovide end,
         opts = {
             backend = "kitty", -- whatever backend you would like to use
-            max_width = 70,
+            max_width = 100,
             max_height = 12,
             max_width_window_percentage = math.huge,
             max_height_window_percentage = math.huge,
+            window_overlap_clear_enabled = true,
+            window_overlap_clear_ft_ingore = { "cmp_menu", "cmp_docs", "" },
             integrations = {
                 markdown = {
                     enabled = true,
@@ -28,7 +30,7 @@ return {
         keys = {
             { "<leader>mi", "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
             { "<leader>mf", "<cmd>MoltenImagePopup<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
-            { "<leader>mc", "<cmd>MoltenEvaluateCell<cr>",          mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
+            { "<leader>mc", "<cmd>MoltenEvaluateCell<cr>",           mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
             { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>",         mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
             { "<leader>mh", "<cmd>MoltenHideOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
             { "<leader>ms", "<cmd>MoltenShowOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
@@ -36,6 +38,7 @@ return {
         },
         init = function()
             vim.g.molten_image_provider = "image.nvim"
+            vim.g.molten_output_win_max_height = 20
             vim.g.molten_auto_open_output = true
             vim.g.molten_wrap_output = true
             vim.g.molten_virt_text_output = true
@@ -54,15 +57,13 @@ return {
         dependencies = {
             "nvim-mini/mini.nvim",
             "benlubas/molten-nvim",
-            "anuvyklack/hydra.nvim",
+            "nvimtools/hydra.nvim",
         },
         event = "VeryLazy",
         config = function()
-            require("notebook-navigator").setup(
-            --     {
-            --     activate_hydra_keys = "<leader>j"
-            -- }
-            )
+            local nn = require "notebook-navigator"
+            nn.setup({})
+            -- nn.setup({ activate_hydra_keys = "<leader>j" })
         end,
     },
     {

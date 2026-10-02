@@ -41,7 +41,7 @@ return {
     'lervag/vimtex',
     'barreiroleo/ltex-extra.nvim',
 
-    "anuvyklack/hydra.nvim",
+    "nvimtools/hydra.nvim",
     {
         'andymass/vim-matchup',
         config = function()
