@@ -29,6 +29,8 @@ return {
         ft = 'python',
         keys = {
             { "<leader>mi", "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
+            { "<leader>mdi", "<cmd>MoltenDenit<cr>",                 mode = 'n', ft = 'python', desc = '[M]olten [d]e[i]nit' },
+            { "<leader>mI", "<cmd>MoltenInterrupt<cr>",              mode = 'n', ft = 'python', desc = '[M]olten [I]nterrupt' },
             { "<leader>mf", "<cmd>MoltenImagePopup<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
             { "<leader>mc", "<cmd>MoltenEvaluateCell<cr>",           mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
             { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>",         mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },

@@ -29,7 +29,6 @@ return {
                     hint = {
                         type = "window",
                         positions = "top",
-                        border = "rounded",
                         show_name = true,
                     }
                 },

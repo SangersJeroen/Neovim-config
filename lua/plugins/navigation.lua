@@ -3,20 +3,22 @@ return {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
         config = function()
-            local mark = require('harpoon.mark')
-            local ui = require('harpoon.ui')
+            local harpoon = require("harpoon")
 
-            vim.keymap.set('n', '<leader>a', mark.add_file)
-            vim.keymap.set('n', '<C-e>', ui.toggle_quick_menu)
-
-            vim.keymap.set('n', '<M-1>', function() ui.nav_file(1) end)
-            vim.keymap.set('n', '<M-2>', function() ui.nav_file(2) end)
-            vim.keymap.set('n', '<M-3>', function() ui.nav_file(3) end)
-            vim.keymap.set('n', '<M-4>', function() ui.nav_file(4) end)
-            vim.keymap.set('n', '<M-q>', function() ui.nav_file(5) end)
-            vim.keymap.set('n', '<M-w>', function() ui.nav_file(6) end)
-            vim.keymap.set('n', '<M-e>', function() ui.nav_file(7) end)
-            vim.keymap.set('n', '<M-r>', function() ui.nav_file(8) end)
+            vim.keymap.set('n', '<leader>a', function()
+                harpoon:list():add()
+            end)
+            vim.keymap.set('n', '<C-e>', function()
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+            end)
+            vim.keymap.set('n', '<M-1>', function() harpoon:list():select(1) end)
+            vim.keymap.set('n', '<M-2>', function() harpoon:list():select(2) end)
+            vim.keymap.set('n', '<M-3>', function() harpoon:list():select(3) end)
+            vim.keymap.set('n', '<M-4>', function() harpoon:list():select(4) end)
+            vim.keymap.set('n', '<M-q>', function() harpoon:list():select(5) end)
+            vim.keymap.set('n', '<M-w>', function() harpoon:list():select(6) end)
+            vim.keymap.set('n', '<M-e>', function() harpoon:list():select(7) end)
+            vim.keymap.set('n', '<M-r>', function() harpoon:list():select(8) end)
         end,
     },
     {
