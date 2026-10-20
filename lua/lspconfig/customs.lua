@@ -40,9 +40,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, bufopts)
 
         local lsp_split = require('jeroens.lsp_split')
-        vim.keymap.set('n', '<leader>lv', function() lsp_split.definition_split('vsplit') end,
+        vim.keymap.set('n', '<leader>kv', function() lsp_split.definition_split('vsplit') end,
             { buffer = event.buf, desc = 'Definition in vertical split' })
-        vim.keymap.set('n', '<leader>lh', function() lsp_split.definition_split('split') end,
+        vim.keymap.set('n', '<leader>kh', function() lsp_split.definition_split('split') end,
             { buffer = event.buf, desc = 'Definition in horizontal split' })
 
         vim.keymap.set("n", "<Space>c", function() vim.diagnostic.goto_prev() end, bufopts)
