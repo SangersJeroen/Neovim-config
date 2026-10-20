@@ -28,15 +28,15 @@ return {
         build = ":UpdateRemotePlugins",
         ft = 'python',
         keys = {
-            { "<leader>mi", "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
-            { "<leader>mdi", "<cmd>MoltenDenit<cr>",                 mode = 'n', ft = 'python', desc = '[M]olten [d]e[i]nit' },
-            { "<leader>mI", "<cmd>MoltenInterrupt<cr>",              mode = 'n', ft = 'python', desc = '[M]olten [I]nterrupt' },
-            { "<leader>mf", "<cmd>MoltenImagePopup<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
-            { "<leader>mc", "<cmd>MoltenEvaluateCell<cr>",           mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
-            { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>",         mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
-            { "<leader>mh", "<cmd>MoltenHideOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
-            { "<leader>ms", "<cmd>MoltenShowOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
-            { "<leader>me", "<cmd>:noautocmd MoltenEnterOutput<cr>", mode = 'n', ft = 'python', desc = '[M]olten [E]nter output' },
+            { "<leader>mi",  "<cmd>MoltenInit<cr>",                   mode = 'n', ft = 'python', desc = '[M]olten [i]nit' },
+            { "<leader>mdi", "<cmd>MoltenDenit<cr>",                  mode = 'n', ft = 'python', desc = '[M]olten [d]e[i]nit' },
+            { "<leader>mI",  "<cmd>MoltenInterrupt<cr>",              mode = 'n', ft = 'python', desc = '[M]olten [I]nterrupt' },
+            { "<leader>mf",  "<cmd>MoltenImagePopup<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [F]igure' },
+            { "<leader>mc",  "<cmd>MoltenEvaluateCell<cr>",           mode = 'n', ft = 'python', desc = '[M]olten eval [C]ell' },
+            { "<leader>mv",  "<cmd>MoltenEvaluateVisual<cr>",         mode = 'n', ft = 'python', desc = '[M]olten eval [V]isual' },
+            { "<leader>mh",  "<cmd>MoltenHideOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [H]ide output' },
+            { "<leader>ms",  "<cmd>MoltenShowOutput<cr>",             mode = 'n', ft = 'python', desc = '[M]olten [S]how output' },
+            { "<leader>me",  "<cmd>:noautocmd MoltenEnterOutput<cr>", mode = 'n', ft = 'python', desc = '[M]olten [E]nter output' },
         },
         init = function()
             vim.g.molten_image_provider = "image.nvim"
@@ -74,30 +74,31 @@ return {
             require('jupytext').setup({})
         end
     },
-    {
-        "linux-cultist/venv-selector.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
-        },
-        event = 'VeryLazy',
-        config = function()
-            require("venv-selector").setup {
-                settings = {
-                    options = {
-                        enable_default_searches = false,
-                        debug = true,
-                    },
-                    search = {
-                        my_venvs = {
-                            command = "fdfind '/bin/python$' ~/Virtual-environments/ --full-path --color never -I",
-                        }
-                    }
-                }
-            }
-        end,
-        keys = {
-            { ",v", "<cmd>VenvSelect<cr>" },
-        },
-    },
+    -- {
+    --     "linux-cultist/venv-selector.nvim",
+    --     dependencies = {
+    --         "neovim/nvim-lspconfig",
+    --         "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+    --     },
+    --     event = 'VeryLazy',
+    --     config = function()
+    --         require("venv-selector").setup {
+    --             settings = {
+    --                 options = {
+    --                     enable_default_searches = false,
+    --                     debug = true,
+    --                     log_level = 'debug',
+    --                 },
+    --                 search = {
+    --                     my_venvs = {
+    --                         command = "fdfind '/bin/python$' '/home/jeroensangers/Virtual-environments/' --full-path --color never -I",
+    --                     }
+    --                 }
+    --             }
+    --         }
+    --     end,
+    --     keys = {
+    --         { ",v", "<cmd>VenvSelect<cr>" },
+    --     },
+    -- },
 }

@@ -42,7 +42,18 @@ return {
     },
     {
         'mrjones2014/smart-splits.nvim',
-        build = './kitty/install-kittens.bash',
+        lazy=false,
+        opts = {
+            mux = {
+                backend = 'smart-splits-backend-kitty',
+            },
+        },
+        dependencies={
+            {
+                'smart-splits-nvim/backend-kitty',
+                module = 'smart-splits-backend-kitty',
+            }
+        },
         config = function()
             local ss = require('smart-splits')
             vim.keymap.set('n', '<A-h>', ss.resize_left)

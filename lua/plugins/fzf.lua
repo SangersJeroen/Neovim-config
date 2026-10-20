@@ -94,7 +94,7 @@ return { {
         },
         {
             '<C-p>',
-            function () require('fzf-lua').keymaps() end,
+            function() require('fzf-lua').keymaps() end,
             desc = 'Command Palette'
         },
     }
