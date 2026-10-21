@@ -2,6 +2,7 @@ return {
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local harpoon = require("harpoon")
 
@@ -25,7 +26,6 @@ return {
         'smoka7/hop.nvim',
         config = function()
             local hop = require('hop')
-            local directions = require('hop.hint').HintDirection
 
             require 'hop'.setup {
                 keys = 'asdfghjkl;qweruiopvncm',
@@ -48,37 +48,15 @@ return {
                 at_edge = 'split',
             },
             mux = {
-                backend = 'smart-splits-backend-kitty',
+                backend = 'smart-splits-backend-tmux',
             },
         },
         dependencies = {
             {
-                'smart-splits-nvim/backend-kitty',
-                dir = '/home/jeroensangers/Repos/backend-kitty',
-                module = 'smart-splits-backend-kitty',
-                opts = {
-                    enable = true,
-
-                    -- Remote-control password. When unset, falls back to
-                    -- vim.g.smart_splits_kitty_password.
-                    -- https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remote_control_password
-                    password = nil,
-
-                    -- Which edges may create a Kitty split when move.at_edge is 'split'.
-                    at_edge = 'split',
-                    split = {
-                        left = true,
-                        right = true,
-                        up = true,
-                        down = true,
-                    },
-
-                    -- Kitty's stack layout is its zoom/fullscreen.
-                    zoom = {
-                        block_nav = false, -- refuse move and resize while the tab layout is 'stack'
-                    },
-                }
-            }
+                'smart-splits-nvim/backend-tmux',
+                main = 'smart-splits-backend-tmux',
+                opts = {},
+            },
         },
         config = function(_, opts)
             require('smart-splits').setup(opts)

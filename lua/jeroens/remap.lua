@@ -42,10 +42,3 @@ vim.keymap.set('n', '<M-s>', '<cmd>split<CR>', {desc='split horizontal ([s])'})
 vim.keymap.set('i', 'jk', '<Esc>', {desc='leave insert mode ([j][k])'})
 
 vim.keymap.set('v', '<leader>sa', ":s/:[^,]*[, \\|*^)]/=,\\r/g", {desc='[s]ignature to [a]rguments call'})
-
--- Declare a function to toggle diagnostics
-function ToggleDiagnostics()
-  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end
-
-vim.keymap.set("n", "<leader>tt", "<cmd>lua ToggleDiagnostics()<CR>", {desc='[t]oggle diagnostics ([t])', noremap = true, silent = true })

@@ -1,5 +1,7 @@
+vim.loader.enable()
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -10,13 +12,19 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.o.shell = '/bin/zsh'
-
+if vim.fn.executable('zsh') == 1 then
+  vim.o.shell = 'zsh'
+end
 
 require('jeroens')
 
 vim.o.encoding = 'UTF-8'
-vim.opt.conceallevel = 2
 
-require("lazy").setup('plugins')
-
+require("lazy").setup('plugins', {
+  change_detection = { enabled = false },
+  performance = {
+    rtp = {
+      disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
+    },
+  },
+})

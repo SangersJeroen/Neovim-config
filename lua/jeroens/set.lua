@@ -30,38 +30,28 @@ vim.opt.colorcolumn = "72,80,120"
 
 vim.g.mapleader = " "
 
-vim.g.codeium_disable_bindings = 1
-vim.g.codeium_enabled = true
-vim.g.codeium_manual = true
-
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
-
-if vim.g.neovide then
-    -- vim.o.guifont = "CaskaydiaCove NFM"
-    vim.o.guifont = "JetBrainsMono Nerd Font Mono:h14"
-    vim.opt.linespace = 4
-    vim.g.neovide_padding_top = 0
-    vim.g.neovide_padding_bottom = 0
-    vim.g.neovide_padding_right = 0
-    vim.g.neovide_padding_left = 0
-    vim.g.neovide_scroll_animation_length = 0.15
-    vim.g.neovide_scroll_animation_far_lines = 0
-    vim.g.neovide_hide_mouse_when_typing = true
-    vim.g.neovide_scale_factor = 0.75
-    local change_scale_factor = function(delta)
-        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
-    end
-    vim.keymap.set("n", "<C-+>", function()
-        change_scale_factor(1.25)
-    end, {desc='Increase font size'})
-    vim.keymap.set("n", "<C-->", function()
-        change_scale_factor(1 / 1.25)
-    end, {desc='Decrease font size'})
-end
 
 -- Options for undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
+
+-- Remote editing: no language providers needed, and copy to the local clipboard over ssh.
+for _, provider in ipairs({ 'python3', 'node', 'ruby', 'perl' }) do
+    vim.g['loaded_' .. provider .. '_provider'] = 0
+end
+
+if vim.env.SSH_TTY or vim.env.SSH_CONNECTION then
+    local osc52 = require('vim.ui.clipboard.osc52')
+    local function paste()
+        return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') }
+    end
+    vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = { ['+'] = osc52.copy('+'), ['*'] = osc52.copy('*') },
+        paste = { ['+'] = paste, ['*'] = paste },
+    }
+end
