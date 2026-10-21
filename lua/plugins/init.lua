@@ -29,7 +29,7 @@ return {
         "shortcuts/no-neck-pain.nvim",
         event = "VeryLazy",
         keys = {
-            { "<leader>nnp", "<cmd>NoNeckPain<cr>", desc = "No Neck Pain", },
+            { "<leader>tn", "<cmd>NoNeckPain<cr>", desc = "[t]oggle [n]o-neck-pain", },
         },
         config = function()
             require("no-neck-pain").setup({

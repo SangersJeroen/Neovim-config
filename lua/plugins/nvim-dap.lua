@@ -35,8 +35,8 @@ return {
                 },
             }
 
-            vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
-            vim.keymap.set('n', '<leader>dc', dap.continue, { desc = "DAP Continue" })
+            vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = "[d]ebugger [t]oggle breakpoint" })
+            vim.keymap.set('n', '<leader>dc', dap.continue, { desc = "[d]ebugger [c]ontinue" })
 
             -- Debug mode: <leader>dd enters, stepping keys stay active until <Esc>/q.
             -- Pink: keys that are not heads keep their normal meaning.
@@ -93,8 +93,8 @@ return {
         },
         config = function()
             require('dapui').setup()
-            vim.keymap.set('n', '<leader>do', require('dapui').open, { desc = "DAPui Open" })
-            vim.keymap.set('n', '<leader>dx', require('dapui').close, { desc = "DAPui Close" })
+            vim.keymap.set('n', '<leader>do', require('dapui').open, { desc = "[d]ebugger UI [o]pen" })
+            vim.keymap.set('n', '<leader>dx', require('dapui').close, { desc = "[d]ebugger UI close ([x])" })
         end,
     },
     {

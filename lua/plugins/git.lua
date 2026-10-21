@@ -4,21 +4,21 @@ return {
         config = function()
             require('gitsigns').setup()
             local gs = package.loaded.gitsigns
-            vim.keymap.set('n', '<leader>hs', gs.stage_hunk, { desc = 'stage chunk' })
-            vim.keymap.set('n', '<leader>hr', gs.reset_hunk, { desc = 'reset chunk' })
+            vim.keymap.set('n', '<leader>hs', gs.stage_hunk, { desc = '[h]unk [s]tage' })
+            vim.keymap.set('n', '<leader>hr', gs.reset_hunk, { desc = '[h]unk [r]eset' })
             vim.keymap.set('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-                { desc = 'stage selected' })
+                { desc = '[h]unk [s]tage selection' })
             vim.keymap.set('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-                { desc = 'reset selected' })
-            vim.keymap.set('n', '<leader>hS', gs.stage_buffer, { desc = 'stage file' })
-            vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'undo stage' })
-            vim.keymap.set('n', '<leader>hR', gs.reset_buffer, { desc = 'reset file' })
-            vim.keymap.set('n', '<leader>hp', gs.preview_hunk, { desc = 'preview chunk' })
-            vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = 'full blame' })
-            vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle blame' })
-            vim.keymap.set('n', '<leader>hd', gs.diffthis, { desc = 'diff this' })
-            vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'diff this' })
-            vim.keymap.set('n', '<leader>td', gs.toggle_deleted, { desc = 'show deleted' })
+                { desc = '[h]unk [r]eset selection' })
+            vim.keymap.set('n', '<leader>hS', gs.stage_buffer, { desc = '[h]unk stage buffer ([S])' })
+            vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk, { desc = '[h]unk [u]ndo stage' })
+            vim.keymap.set('n', '<leader>hR', gs.reset_buffer, { desc = '[h]unk reset buffer ([R])' })
+            vim.keymap.set('n', '<leader>hp', gs.preview_hunk, { desc = '[h]unk [p]review' })
+            vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = '[h]unk [b]lame (full)' })
+            vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, { desc = '[t]oggle line [b]lame' })
+            vim.keymap.set('n', '<leader>hd', gs.diffthis, { desc = '[h]unk [d]iff against index' })
+            vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end, { desc = '[h]unk [D]iff against last commit' })
+            vim.keymap.set('n', '<leader>td', gs.toggle_deleted, { desc = '[t]oggle [d]eleted lines' })
             vim.keymap.set('n', ']h', function() gs.nav_hunk('next') end, { desc = 'next [h]unk' })
             vim.keymap.set('n', '[h', function() gs.nav_hunk('prev') end, { desc = 'previous [h]unk' })
         end
@@ -26,7 +26,7 @@ return {
     {
         'mbbill/undotree',
         config = function()
-            vim.keymap.set('n', '<leader>U', vim.cmd.UndotreeToggle, { desc = 'toggle [U]ndotree' })
+            vim.keymap.set('n', '<leader>tu', vim.cmd.UndotreeToggle, { desc = '[t]oggle [u]ndotree' })
         end
     },
     {
@@ -84,7 +84,7 @@ return {
                 function()
                     require('gitgraph').draw({}, { all = true, max_count = 5000 })
                 end,
-                desc = "GitGraph - Draw",
+                desc = "[g]it [l]og graph",
             },
         },
     },
@@ -99,7 +99,7 @@ return {
         cmd = "Neogit",
         opts = { integrations = { diffview = true, fzf_lua = true } },
         keys = {
-            { "<leader>ng", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+            { "<leader>gg", "<cmd>Neogit<cr>", desc = "[g]it Neo[g]it UI" }
         }
     },
     {
@@ -107,7 +107,7 @@ return {
         lazy = true,
         cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
         keys = {
-            { "<leader>gd", "<cmd>DiffviewOpen<cr>",              desc = "Diffview: working tree" },
+            { "<leader>gd", "<cmd>DiffviewOpen<cr>",              desc = "[g]it [d]iff working tree" },
             {
                 "<leader>gb",
                 function()
@@ -117,11 +117,11 @@ return {
                         end
                     end)
                 end,
-                desc = "Diffview: branch vs base",
+                desc = "[g]it diff [b]ranch vs base",
             },
-            { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>",     desc = "Diffview: file history" },
-            { "<leader>gH", "<cmd>DiffviewFileHistory<cr>",       desc = "Diffview: branch history" },
-            { "<leader>gc", "<cmd>DiffviewClose<cr>",             desc = "Diffview: close" },
+            { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>",     desc = "[g]it file [h]istory" },
+            { "<leader>gH", "<cmd>DiffviewFileHistory<cr>",       desc = "[g]it branch [H]istory" },
+            { "<leader>gc", "<cmd>DiffviewClose<cr>",             desc = "[g]it diff [c]lose" },
         },
         opts = {
             hooks = {

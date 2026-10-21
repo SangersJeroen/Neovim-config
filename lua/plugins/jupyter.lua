@@ -76,8 +76,6 @@ return {
                 ft = "python",
                 desc = "previous notebook [c]ell",
             },
-            { "<leader>e", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
-            { "<leader>E", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
         },
         dependencies = {
             "nvim-mini/mini.nvim",

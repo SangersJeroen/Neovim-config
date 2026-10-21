@@ -36,28 +36,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
             client.server_capabilities.hoverProvider = false
         end
 
-        local bufopts = { buffer = event.buf }
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
+        local function map(lhs, rhs, desc)
+            vim.keymap.set("n", lhs, rhs, { buffer = event.buf, desc = desc })
+        end
 
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
-        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, bufopts)
+        map("K", function() vim.lsp.buf.hover() end, "hover ([K]eyword)")
+        map("gd", function() vim.lsp.buf.definition() end, "[g]o to [d]efinition")
+        map("gD", function() vim.lsp.buf.declaration() end, "[g]o to [D]eclaration")
 
         local lsp_split = require('jeroens.lsp_split')
-        vim.keymap.set('n', '<leader>kv', function() lsp_split.definition_split('vsplit') end,
-            { buffer = event.buf, desc = 'Definition in vertical split' })
-        vim.keymap.set('n', '<leader>kh', function() lsp_split.definition_split('split') end,
-            { buffer = event.buf, desc = 'Definition in horizontal split' })
+        map("<leader>kv", function() lsp_split.definition_split('vsplit') end, "lo[k]up definition in [v]ertical split")
+        map("<leader>kh", function() lsp_split.definition_split('split') end, "lo[k]up definition in [h]orizontal split")
 
-        vim.keymap.set("n", "<leader>c", function() vim.diagnostic.goto_prev() end, bufopts)
-        vim.keymap.set("n", "<leader>v", function() vim.diagnostic.goto_next() end, bufopts)
-
-        vim.keymap.set('n', '<leader>wa', function() vim.lsp.buf.add_workspace_folder() end, bufopts)
-        vim.keymap.set('n', '<leader>wr', function() vim.lsp.buf.remove_workspace_folder() end, bufopts)
-        vim.keymap.set('n', '<leader>wl', function()
+        map("<leader>wa", function() vim.lsp.buf.add_workspace_folder() end, "[w]orkspace [a]dd folder")
+        map("<leader>wr", function() vim.lsp.buf.remove_workspace_folder() end, "[w]orkspace [r]emove folder")
+        map("<leader>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, bufopts)
+        end, "[w]orkspace [l]ist folders")
 
-        vim.keymap.set('n', '<M-p>', function() vim.lsp.buf.format() end, bufopts)
+        map("<M-p>", function() vim.lsp.buf.format() end, "[p]rettify (format) buffer")
     end
 })
 

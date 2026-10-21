@@ -29,74 +29,74 @@ return { {
         {
             '<leader>ff',
             function() require('fzf-lua').files() end,
-            desc = "Find Files"
+            desc = "[f]ind [f]iles"
         },
         {
             '<leader>gf',
             function()
                 require('fzf-lua').git_files()
             end,
-            desc = 'Find Git Files'
+            desc = '[g]it [f]iles'
         },
         {
             '<leader>fw',
             function() require('fzf-lua').grep_cword() end,
             desc =
-            'Find Word (under cursor)'
+            '[f]ind [w]ord under cursor'
         },
         {
             '<leader>fg',
             function() require('fzf-lua').live_grep() end,
             desc =
-            'Live Search'
+            '[f]ind by [g]rep (live)'
         },
         -- Finding LSP related objects
         {
             '<leader>fr',
             function() require('fzf-lua').lsp_references() end,
             desc =
-            'Find References'
+            '[f]ind [r]eferences'
         },
         {
             '<leader>fd',
             function() require('fzf-lua').lsp_declarations() end,
-            desc = "Find Declaration"
+            desc = "[f]ind [d]eclaration"
         },
         {
             '<leader>fls',
             function() require('fzf-lua').lsp_document_symbols() end,
-            desc = "Find LSP Diag. Doc"
+            desc = "[f]ind [l]sp [s]ymbols"
         },
         {
             '<leader>fldd',
             function() require('fzf-lua').diagnostics_document() end,
-            desc = "Find LSP Diag. Doc"
+            desc = "[f]ind [l]sp [d]iagnostics, [d]ocument"
         },
         {
             '<leader>fldw',
             function() require('fzf-lua').diagnostics_workspace() end,
-            desc = "Find LSP Diag. WSpace"
+            desc = "[f]ind [l]sp [d]iagnostics, [w]orkspace"
         },
         {
             '<leader>flf',
             function() require('fzf-lua').lsp_finder() end,
-            desc = "Finder LSP"
+            desc = "[f]ind [l]sp [f]inder"
         },
         -- DAP Breakpoints
         {
             '<leader>db',
             function() require('fzf-lua').dap_breakpoints() end,
-            desc = "Find DAP Breakp."
+            desc = "[d]ebugger [b]reakpoints"
         },
         {
             '<leader>dv',
             function() require('fzf-lua').dap_variables() end,
-            desc = "Find DAP Var."
+            desc = "[d]ebugger [v]ariables"
         },
         {
             '<C-p>',
             function() require('fzf-lua').keymaps() end,
-            desc = 'Command Palette'
+            desc = 'command [p]alette (keymaps)'
         },
     }
 } }
