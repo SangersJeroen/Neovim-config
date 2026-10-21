@@ -9,6 +9,7 @@ return { {
     ---@diagnostics enable: missing-fields
     config = function()
         local actions = require('fzf-lua').actions
+        require('fzf-lua').register_ui_select()
         require('fzf-lua').setup({
             winopts = { preview = { default = "bat" } },
             keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },

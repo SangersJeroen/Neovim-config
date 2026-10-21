@@ -51,8 +51,31 @@ return {
     {
         "GCBallesteros/NotebookNavigator.nvim",
         keys = {
-            { "]h",        function() require("notebook-navigator").move_cell "d" end },
-            { "[h",        function() require("notebook-navigator").move_cell "u" end },
+            -- ]c / [c are also Neovim's diff-mode motions: keep those inside diff windows.
+            {
+                "]c",
+                function()
+                    if vim.wo.diff then
+                        vim.cmd.normal { "]c", bang = true }
+                    else
+                        require("notebook-navigator").move_cell "d"
+                    end
+                end,
+                ft = "python",
+                desc = "next notebook [c]ell",
+            },
+            {
+                "[c",
+                function()
+                    if vim.wo.diff then
+                        vim.cmd.normal { "[c", bang = true }
+                    else
+                        require("notebook-navigator").move_cell "u"
+                    end
+                end,
+                ft = "python",
+                desc = "previous notebook [c]ell",
+            },
             { "<leader>e", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
             { "<leader>E", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
         },

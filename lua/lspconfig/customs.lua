@@ -31,6 +31,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
         end
 
+        -- ty already provides hover; keep ruff to linting, code actions and formatting.
+        if client and client.name == 'ruff' then
+            client.server_capabilities.hoverProvider = false
+        end
+
         local bufopts = { buffer = event.buf }
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, bufopts)
 
@@ -58,22 +63,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- PYTHON LANGUAGE SERVERS CONFIGURATION ________________________________________________________
 
-local venv_path = os.getenv('VIRTUAL_ENV')
-local py_path = nil
--- decide which python executable to use for mypy
-if venv_path ~= nil then
-    py_path = venv_path .. "/bin/python3"
-else
-    py_path = vim.g.python3_host_prog
-end
+-- Type checking comes from ty, linting and formatting from ruff.
+-- vim.lsp.enable() only starts a server once a buffer with a matching filetype is opened.
+vim.lsp.enable({ 'clangd', 'lua_ls', 'ltex', 'ty', 'ruff' })
 
 
--- vim.lsp.enable('basedpyright')
--- vim.lsp.enable('zuban')
--- vim.lsp.enable('ruff')
--- vim.lsp.enable('mypy')
-vim.lsp.enable('ty')
+-- LUA LANGUAGE SERVER CONFIGURATION ____________________________________________________________
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = { 'vim' } },
+            workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } },
+            telemetry = { enable = false },
+        },
+    },
+})
 
+
+-- DORMANT SERVERS: configured below but deliberately not enabled (zls, texlab, harper_ls, lemminx).
+-- rust_analyzer is managed by rustaceanvim.
 
 -- ZIG LANGUAGE SERVERS CONFIGURATION ___________________________________________________________
 vim.lsp.config("zls",
@@ -157,26 +166,6 @@ vim.lsp.config('clangd', {
         client.server_capabilities.signatureHelpProvider = false
     end,
 })
-
---- Rust configuration
--- lspconfig.rust_analyzer.setup({
---     on_attach = function (client, bufnr)
---         vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
---     end,
---     capabilities = lsp_capabilities,
---     filetypes = { 'rust' },
---     settings = {
---         ['rust-analyzer'] = {
---             cargo = { allFeatures = true, },
---             check = { command = "clippy" },
---             diagnositcs = { enable = true },
---         },
---     },
--- }
--- )
---
-
-
 
 --- XML configuration
 vim.lsp.config("lemminx", {

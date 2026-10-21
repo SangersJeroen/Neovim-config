@@ -14,10 +14,16 @@ return {
     {
         'stevearc/quicker.nvim',
         event = "FileType qf",
-        opts = {},
-        config = function()
-            require("quicker").setup()
-        end
+        keys = {
+            { "<leader>q", function() require("quicker").toggle() end,                   desc = "Toggle [q]uickfix" },
+            { "<leader>L", function() require("quicker").toggle({ loclist = true }) end, desc = "Toggle [L]ocation list" },
+        },
+        opts = {
+            keys = {
+                { ">", function() require("quicker").expand({ before = 2, after = 2, add_to_existing = true }) end, desc = "Expand quickfix context" },
+                { "<", function() require("quicker").collapse() end,                                                 desc = "Collapse quickfix context" },
+            },
+        },
     },
     {
         "shortcuts/no-neck-pain.nvim",

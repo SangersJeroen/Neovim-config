@@ -19,6 +19,8 @@ return {
             vim.keymap.set('n', '<leader>hd', gs.diffthis, { desc = 'diff this' })
             vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'diff this' })
             vim.keymap.set('n', '<leader>td', gs.toggle_deleted, { desc = 'show deleted' })
+            vim.keymap.set('n', ']h', function() gs.nav_hunk('next') end, { desc = 'next [h]unk' })
+            vim.keymap.set('n', '[h', function() gs.nav_hunk('prev') end, { desc = 'previous [h]unk' })
         end
     },
     {
@@ -95,6 +97,7 @@ return {
             "ibhagwan/fzf-lua",
         },
         cmd = "Neogit",
+        opts = { integrations = { diffview = true, fzf_lua = true } },
         keys = {
             { "<leader>ng", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
         }

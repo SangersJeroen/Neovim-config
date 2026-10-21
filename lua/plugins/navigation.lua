@@ -29,7 +29,7 @@ return {
 
             require 'hop'.setup {
                 keys = 'asdfghjkl;qweruiopvncm',
-                quit_key = ' <ESC>',
+                quit_key = '<Esc>',
                 multi_windows = true,
             }
 

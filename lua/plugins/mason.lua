@@ -16,11 +16,8 @@ return {
                     'lua_ls',
                     'ltex',
                 },
-                -- Servers configured in lspconfig/customs.lua but deliberately not enabled.
-                -- rust_analyzer is managed by rustaceanvim.
-                automatic_enable = {
-                    exclude = { 'zls', 'texlab', 'harper_ls', 'lemminx', 'rust_analyzer' },
-                },
+                -- Servers are enabled explicitly in lspconfig/customs.lua.
+                automatic_enable = false,
             })
         end,
     },
@@ -32,9 +29,7 @@ return {
         config = function()
             require('mason-tool-installer').setup({
                 ensure_installed = {
-                    'black',
                     'ruff',
-                    'mypy',
                     'debugpy',
                 },
             })

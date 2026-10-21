@@ -10,6 +10,7 @@ return {
                 notes_subdir = "modica",
                 ui = {enable = false},
                 legacy_commands = false,
+                picker = { name = "fzf-lua" },
                 workspaces = {
                     {
                         name = "Shard",
@@ -28,7 +29,7 @@ return {
                     invoke_on_body = true,
                     hint = {
                         type = "window",
-                        positions = "top",
+                        position = "top",
                         show_name = true,
                     }
                 },
