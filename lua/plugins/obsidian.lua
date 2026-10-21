@@ -41,7 +41,7 @@ return {
 ^                                           ^
 ^               _q_/_<Esc>_: Quit           ^
             ]],
-                body = "<Space>o",
+                body = "<leader>o",
                 heads = {
                     { "t",     cmd "Obsidian today",     { desc = "Today's Note", nowait = true, exit_before = true } },
                     { "y",     cmd "Obsidian yesterday", { desc = "Yesterday's Note", nowait = true, exit_before = true } },

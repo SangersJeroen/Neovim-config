@@ -14,10 +14,6 @@ return {
                     }
                 }
             )
-            vim.keymap.set('n', '<leader>g', ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
         end,
-        keys = {
-            { '<leader>g', desc = 'Neogen generate docs' }
-        }
     }
 }

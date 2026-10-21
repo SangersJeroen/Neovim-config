@@ -36,8 +36,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, bufopts)
         vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, bufopts)
-        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, bufopts)
-        vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, bufopts)
 
         local lsp_split = require('jeroens.lsp_split')
         vim.keymap.set('n', '<leader>kv', function() lsp_split.definition_split('vsplit') end,
@@ -45,18 +43,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>kh', function() lsp_split.definition_split('split') end,
             { buffer = event.buf, desc = 'Definition in horizontal split' })
 
-        vim.keymap.set("n", "<Space>c", function() vim.diagnostic.goto_prev() end, bufopts)
-        vim.keymap.set("n", "<Space>v", function() vim.diagnostic.goto_next() end, bufopts)
-        vim.keymap.set("n", "<C-x>", function() vim.lsp.buf.code_action() end, bufopts)
+        vim.keymap.set("n", "<leader>c", function() vim.diagnostic.goto_prev() end, bufopts)
+        vim.keymap.set("n", "<leader>v", function() vim.diagnostic.goto_next() end, bufopts)
 
-        vim.keymap.set('n', '<space>wa', function() vim.lsp.buf.add_workspace_folder() end, bufopts)
-        vim.keymap.set('n', '<space>wr', function() vim.lsp.buf.remove_workspace_folder() end, bufopts)
-        vim.keymap.set('n', '<space>wl', function()
+        vim.keymap.set('n', '<leader>wa', function() vim.lsp.buf.add_workspace_folder() end, bufopts)
+        vim.keymap.set('n', '<leader>wr', function() vim.lsp.buf.remove_workspace_folder() end, bufopts)
+        vim.keymap.set('n', '<leader>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, bufopts)
 
-        vim.keymap.set('n', '<space>D', function() vim.lsp.buf.type_definition() end, bufopts)
-        vim.keymap.set('n', '<space>rn', function() vim.lsp.buf.rename() end, bufopts)
         vim.keymap.set('n', '<M-p>', function() vim.lsp.buf.format() end, bufopts)
     end
 })

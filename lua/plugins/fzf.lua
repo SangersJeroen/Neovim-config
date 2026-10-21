@@ -83,12 +83,12 @@ return { {
         },
         -- DAP Breakpoints
         {
-            '<leader>fbp',
+            '<leader>db',
             function() require('fzf-lua').dap_breakpoints() end,
             desc = "Find DAP Breakp."
         },
         {
-            '<leader>fdv',
+            '<leader>dv',
             function() require('fzf-lua').dap_variables() end,
             desc = "Find DAP Var."
         },

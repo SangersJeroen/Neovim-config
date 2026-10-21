@@ -96,6 +96,24 @@ return {
     {
         'sindrets/diffview.nvim',
         lazy = true,
+        cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
+        keys = {
+            { "<leader>gd", "<cmd>DiffviewOpen<cr>",              desc = "Diffview: working tree" },
+            {
+                "<leader>gb",
+                function()
+                    vim.ui.input({ prompt = "Base branch: ", default = "origin/main" }, function(base)
+                        if base and base ~= "" then
+                            vim.cmd("DiffviewOpen " .. base .. "...HEAD")
+                        end
+                    end)
+                end,
+                desc = "Diffview: branch vs base",
+            },
+            { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>",     desc = "Diffview: file history" },
+            { "<leader>gH", "<cmd>DiffviewFileHistory<cr>",       desc = "Diffview: branch history" },
+            { "<leader>gc", "<cmd>DiffviewClose<cr>",             desc = "Diffview: close" },
+        },
         opts = {
             hooks = {
                 diff_buf_read = function(bufnr)

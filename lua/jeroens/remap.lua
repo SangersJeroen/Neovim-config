@@ -37,11 +37,7 @@ vim.keymap.set('v', '<leader>sa', ":s/:[^,]*[, \\|*^)]/=,\\r/g")
 
 -- Declare a function to toggle diagnostics
 function ToggleDiagnostics()
-  if vim.diagnostic.is_enabled() then
-    vim.diagnostic.disable()
-  else
-    vim.diagnostic.enable()
-  end
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end
 
 vim.keymap.set("n", "<leader>tt", "<cmd>lua ToggleDiagnostics()<CR>", {desc='Toggle diagnostics', noremap = true, silent = true })

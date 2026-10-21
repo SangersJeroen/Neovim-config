@@ -35,7 +35,6 @@ return {
 
     },
     'tpope/vim-sleuth',
-    'tpope/vim-dispatch',
 
     -- Pluggins for LaTeX editting
     {

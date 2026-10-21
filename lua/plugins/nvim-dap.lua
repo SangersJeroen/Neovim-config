@@ -2,6 +2,7 @@ return {
     {
         'mfussenegger/nvim-dap',
         event = 'VeryLazy',
+        dependencies = { 'nvimtools/hydra.nvim' },
         config = function()
             local dap = require("dap")
 
@@ -36,6 +37,43 @@ return {
 
             vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
             vim.keymap.set('n', '<leader>dc', dap.continue, { desc = "DAP Continue" })
+
+            -- Debug mode: <leader>dd enters, stepping keys stay active until <Esc>/q.
+            -- Pink: keys that are not heads keep their normal meaning.
+            local Hydra = require("hydra")
+            Hydra({
+                name = "Debug",
+                mode = "n",
+                body = "<leader>dd",
+                hint = [[
+ _c_: continue/start   _n_: step over   _b_: breakpoint        _K_: eval
+ _r_: run last         _i_: step into   _B_: cond. breakpoint  _u_: toggle UI
+ _C_: run to cursor    _o_: step out    _R_: REPL
+ _x_: terminate
+ ^ ^                       _q_/_<Esc>_: quit
+]],
+                config = {
+                    color = "pink",
+                    invoke_on_body = true,
+                    hint = { type = "window", position = "bottom", show_name = true },
+                },
+                heads = {
+                    { "c", dap.continue,                                                  { desc = "continue" } },
+                    { "r", dap.run_last,                                                  { desc = "run last" } },
+                    { "C", dap.run_to_cursor,                                             { desc = "run to cursor" } },
+                    { "x", dap.terminate,                                                 { desc = "terminate" } },
+                    { "n", dap.step_over,                                                 { desc = "step over" } },
+                    { "i", dap.step_into,                                                 { desc = "step into" } },
+                    { "o", dap.step_out,                                                  { desc = "step out" } },
+                    { "b", dap.toggle_breakpoint,                                         { desc = "breakpoint" } },
+                    { "B", function() dap.set_breakpoint(vim.fn.input("Condition: ")) end, { desc = "conditional breakpoint" } },
+                    { "R", dap.repl.toggle,                                               { desc = "REPL" } },
+                    { "K", function() require("dapui").eval() end,                        { desc = "eval" } },
+                    { "u", function() require("dapui").toggle() end,                      { desc = "toggle UI" } },
+                    { "q",     nil, { exit = true, nowait = true, desc = "quit" } },
+                    { "<Esc>", nil, { exit = true, nowait = true, desc = "quit" } },
+                },
+            })
         end,
     },
 
