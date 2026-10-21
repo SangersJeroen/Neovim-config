@@ -22,40 +22,46 @@ return {
         end
     },
     {
-        "jiaoshijie/undotree",
-        ---@module 'undotree.collector'
-        ---@type UndoTreeCollector.Opts
+        'mbbill/undotree',
         config = function()
-            local ut = require('undotree')
-            ut.setup({
-                float_diff = true,
-                position = 'left',
-                ignore_filetype = {
-                    'undotree',
-                    'undotreeDiff',
-                    'qf',
-                },
-                window = {
-                    winblend = 0,
-                    border = 'rounded',
-                },
-            })
-        end,
-        keys = { -- load the plugin only when using it's keybinding:
-            { "<leader>U", "<cmd>lua require('undotree').toggle()<cr>" },
-        },
+            vim.keymap.set('n', '<leader>U', vim.cmd.UndotreeToggle, { desc = 'toggle [U]ndotree' })
+        end
     },
     {
         'isakbm/gitgraph.nvim',
         opts = {
             git_cmd = "git",
-            symbols = {
-                merge_commit = 'M',
-                commit = '*',
-            },
             format = {
                 timestamp = '%H:%M:%S %d-%m-%Y',
                 fields = { 'hash', 'timestamp', 'author', 'branch_name', 'tag' },
+            },
+            symbols = {
+                merge_commit = '',
+                commit = '',
+                merge_commit_end = '',
+                commit_end = '',
+
+                -- Advanced symbols
+                GVER = '',
+                GHOR = '',
+                GCLD = '',
+                GCRD = '╭',
+                GCLU = '',
+                GCRU = '',
+                GLRU = '',
+                GLRD = '',
+                GLUD = '',
+                GRUD = '',
+                GFORKU = '',
+                GFORKD = '',
+                GRUDCD = '',
+                GRUDCU = '',
+                GLUDCD = '',
+                GLUDCU = '',
+                GLRDCL = '',
+                GLRDCR = '',
+                GLRUCL = '',
+                GLRUCR = '',
             },
             hooks = {
                 -- Check diff of a commit

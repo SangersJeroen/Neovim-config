@@ -29,7 +29,6 @@ return {
 
             require 'hop'.setup {
                 keys = 'asdfghjkl;qweruiopvncm',
-                -- keys = 'etovxqpdygfblzhckisuran',
                 quit_key = ' <ESC>',
                 multi_windows = true,
             }
@@ -41,29 +40,56 @@ return {
         end,
     },
     {
-        'mrjones2014/smart-splits.nvim',
-        lazy=false,
+        'smart-splits-nvim/smart-splits.nvim',
+        version = '^3.0.0',
+        lazy = false,
         opts = {
+            move = {
+                at_edge = 'split',
+            },
             mux = {
                 backend = 'smart-splits-backend-kitty',
             },
         },
-        dependencies={
+        dependencies = {
             {
                 'smart-splits-nvim/backend-kitty',
+                dir = '/home/jeroensangers/Repos/backend-kitty',
                 module = 'smart-splits-backend-kitty',
+                opts = {
+                    enable = true,
+
+                    -- Remote-control password. When unset, falls back to
+                    -- vim.g.smart_splits_kitty_password.
+                    -- https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remote_control_password
+                    password = nil,
+
+                    -- Which edges may create a Kitty split when move.at_edge is 'split'.
+                    at_edge = 'split',
+                    split = {
+                        left = true,
+                        right = true,
+                        up = true,
+                        down = true,
+                    },
+
+                    -- Kitty's stack layout is its zoom/fullscreen.
+                    zoom = {
+                        block_nav = false, -- refuse move and resize while the tab layout is 'stack'
+                    },
+                }
             }
         },
-        config = function()
-            local ss = require('smart-splits')
-            vim.keymap.set('n', '<A-h>', ss.resize_left)
-            vim.keymap.set('n', '<A-j>', ss.resize_down)
-            vim.keymap.set('n', '<A-k>', ss.resize_up)
-            vim.keymap.set('n', '<A-l>', ss.resize_right)
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-h>', ss.move_cursor_left)
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-l>', ss.move_cursor_right)
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-j>', ss.move_cursor_down)
-            vim.keymap.set({ 'n', 'v', 'i' }, '<C-k>', ss.move_cursor_up)
+        config = function(_, opts)
+            require('smart-splits').setup(opts)
+            vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+            vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+            vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+            vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-h>', require('smart-splits').move_cursor_left)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-l>', require('smart-splits').move_cursor_right)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-j>', require('smart-splits').move_cursor_down)
+            vim.keymap.set({ 'n', 'v', 'i' }, '<C-k>', require('smart-splits').move_cursor_up)
         end
     }
 }
