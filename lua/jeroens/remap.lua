@@ -28,6 +28,14 @@ vim.keymap.set("n", "<leader>tw", '<cmd>set wrap!<CR>', {desc='[t]oggle [w]rap'}
 vim.keymap.set("n", "j", "gj", {desc='down by display line ([j])'})
 vim.keymap.set("n", "k", "gk", {desc='up by display line ([k])'})
 
+vim.keymap.set("n", "<leader><leader>", function()
+  if vim.fn.bufnr("#") > 0 then
+    vim.cmd("buffer #")
+  else
+    vim.notify("No alternate buffer", vim.log.levels.INFO)
+  end
+end, {desc='switch to last buffer ([<leader>] twice)'})
+
 vim.keymap.set('n', '<M-v>', '<cmd>vsplit<CR>', {desc='split [v]ertical'})
 vim.keymap.set('n', '<M-s>', '<cmd>split<CR>', {desc='split horizontal ([s])'})
 
