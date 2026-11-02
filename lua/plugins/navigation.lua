@@ -54,7 +54,6 @@ return {
         dependencies = {
             {
                 'smart-splits-nvim/backend-kitty',
-                dir = '/home/jeroensangers/Repos/backend-kitty',
                 module = 'smart-splits-backend-kitty',
                 opts = {
                     enable = true,
